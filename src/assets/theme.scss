@@ -1,0 +1,3237 @@
+@charset "UTF-8";
+/*============================================================================
+  Zerance 131 | Built with Slate
+    - You cannot use native CSS/Sass @imports in this file without a build script
+==============================================================================*/
+
+/*================ SETTINGS ================*/
+/*================ Color Variables ================*/
+
+// Text colors
+$heading-color: #000000;
+$text_color: #000000;
+$link_color: #000000;
+$text_invert_color: #ffffff;
+$error_color: #f94c43;
+
+// Backgrounds
+$background: #ffffff;
+$product_on_sale_color: #f94c43;
+
+// Button
+$button_background: #ffffff;
+$button_text_color: #000000;
+
+// Header
+$header_background: #ffffff;
+$header_heading_color: #000000;
+$header_invert_heading_color: #ffffff;
+
+// Footer
+$footer_background: #ffffff;
+$footer_text_color: #000000;
+
+// border
+$border_color: #6a6a6a;
+
+// Side nav
+$navigation_background: #000000;
+$navigation_text_color: #ffffff;
+// mega menu side nav
+$side_nav_images_background: #f7f7f8;
+$side_nav_images_text_color: #ffffff;
+$side_nav_images_border_radius: 0px;
+
+// Side cart
+$side_cart_background: #ffffff;
+$side_cart_text_color: #000000;
+$side_cart_overlay_color : #000000;
+$side_cart_opacity : 0.5;
+
+
+/*================ Form variables ================*/
+$color-border: #000;
+$color-border--focus: #000;
+$color-disabled: #000;
+$color-disabled-border: #000;
+$color-error: #000;
+$color-error-bg: #000;
+$color-success: #000;
+$color-success-bg: #000;
+$svg-select-icon: #{'//cdn.shopify.com/s/files/1/0533/4361/7210/t/2/assets/ico-select.svg?v=1686168240517253357'};
+
+
+/*================ Typography Variables ================*/
+
+@font-face {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_n4.fe093fe9ca22a15354813c912484945a36b79146.woff2?&hmac=64c57d7fee8da8223a0d4856285068c02c248ef210cae57dcd9c3e633375e8a4") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_n4.8bddb85c18a0094c427a9bf65dee963ad88de4e8.woff?&hmac=f74109e3105603c8a8cfbd8dec4e8a7e53572346fb96aacec203fc3881ddabf1") format("woff");
+}
+
+@font-face {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_n4.fe093fe9ca22a15354813c912484945a36b79146.woff2?&hmac=64c57d7fee8da8223a0d4856285068c02c248ef210cae57dcd9c3e633375e8a4") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_n4.8bddb85c18a0094c427a9bf65dee963ad88de4e8.woff?&hmac=f74109e3105603c8a8cfbd8dec4e8a7e53572346fb96aacec203fc3881ddabf1") format("woff");
+}
+
+@font-face {
+  font-family: Helvetica;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_n7.39bee04bd277a9c4e94e2fd42d53f4e3c0afb8a5.woff2?&hmac=b99c35ba03edd5495ba7af87326d5fe8af5b2363f485475338ae16401b9af50d") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_n7.b95359461a6788d5549e702cb2123bc40c227e49.woff?&hmac=684bc7a600f408db705c8f9b90d3d964d22c13a8ce7492386d351a852f30309b") format("woff");
+}
+
+@font-face {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: oblique;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_o4.f9832a0fc1ee8fc5a359636e410d6941e1e4ca03.woff2?&hmac=775a8a34e13ea386c331d51fd5f061993cd3135ce54cc4ed2b9254f3a3be05df") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_o4.0063286aec443697ebae04eeb9c78b820f9f7805.woff?&hmac=32c2cf4f29cdfb274d76aeb45a9a8b5c97eb6a9255cc2073ee5c1a85140ad7fe") format("woff");
+}
+
+@font-face {
+  font-family: Helvetica;
+  font-weight: 700;
+  font-style: oblique;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_o7.215fd4ca1a06214fa01e44328a1992c977700ea2.woff2?&hmac=b7d9523eaf6b1e57f158595303d5e41e66c07d43212d2fbfe8df1f4b7d6c1f79") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_o7.b0a2026ae2aa64d060f9ce0ee1b3c3c1aa21bf88.woff?&hmac=97dc9f03549c58cc74feee46ffde68daa822080823ae1159e9cd489daf68bcb9") format("woff");
+}
+
+
+$heading-font-family : Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+$heading-font-weight : 400;
+$heading-font-style  : normal;
+
+$text-font-family :  Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+$text-font-weight : 400;
+$text-font-style  : normal;
+
+$uppercase-heading: true;
+
+$base-text-font-size   : 14px;
+
+
+/*================ Other variables ================*/
+$gutter : 15px;
+
+
+/*================ Media queries ================*/
+
+$thumb:            "screen and (max-width: 499px)";
+$handheld:         "screen and (min-width: 500px) and (max-width: 800px)";
+$handheld-and-up:  "screen and (min-width: 500px)";
+$pocket:           "screen and (max-width: 800px)";
+$lap:              "screen and (min-width: 801px) and (max-width: 1024px)";
+$lap-and-up:       "screen and (min-width: 801px)";
+$portable:         "screen and (max-width: 1024px)";
+$desk:             "screen and (min-width: 1025px)";
+$widescreen:       "screen and (min-width: 1160px)";
+$retina:           "screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx)";
+
+/**
+ * Avalanche Settings
+ */
+ $av-namespace:              'grid' !default;      // Prefix namespace for grid layout and cells
+ $av-element-name:           'cell' !default;      // Element/cell name
+ $av-element-class-chain:    '__' !default;        // Chain characters between block and element
+ $av-modifier-class-chain:   '--' !default;        // Chain characters between block and modifier
+ $av-breakpoint-class-chain: '--' !default;        // Chain characters between width and breakpoint
+
+ $av-gutter:                 30px !default;         // Gutter between grid cells
+
+ $av-width-class-namespace:  '\3' !default;          // Prefix namespace for width classes. For example; 'col-'
+ $av-width-class-style:      'fraction' !default;  // Width class naming style. Can be 'fraction', 'percentage' or 'fragment'
+ $av-widths: (
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+ ) !default; // Width denominator values. 2 = 1/2, 3 = 1/3 etc. Add/remove as appropriate
+
+ $av-enable-responsive:  true !default;
+
+
+ $thumb           : 'thumb';
+ $handheld        : 'handheld';
+ $handheld-and-up : 'handheld-and-up';
+ $pocket          : 'pocket';
+ $lap             : 'lap';
+ $lap-and-up      : 'lap-and-up';
+ $portable        : 'portable';
+ $desk            : 'desk';
+ $widescreen      : 'widescreen';
+ $retina          : "retina";
+
+ $av-breakpoints:  (
+   $thumb            "screen and (max-width: 499px)",
+   $handheld         "screen and (min-width: 500px) and (max-width: 800px)",
+   $handheld-and-up  "screen and (min-width: 500px)",
+   $pocket           "screen and (max-width: 800px)",
+   $lap              "screen and (min-width: 801px) and (max-width: 1024px)",
+   $lap-and-up       "screen and (min-width: 801px)",
+   $portable         "screen and (max-width: 1024px)",
+   $desk             "screen and (min-width: 1025px)",
+   $widescreen       "screen and (min-width: 1160px)",
+   $retina           "screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx)"
+ ) !default;
+
+ // Enable/disable grid layouts
+ $av-enable-grid-center:       true !default;
+ $av-enable-grid-cell-center:  true !default;
+ $av-enable-grid-right:        true !default;
+ $av-enable-grid-middle:       true !default;
+ $av-enable-grid-bottom:       true !default;
+ $av-enable-grid-flush:        true !default;
+ $av-enable-grid-tiny:         false !default;
+ $av-enable-grid-small:        false !default;
+ $av-enable-grid-large:        true !default;
+ $av-enable-grid-huge:         true !default;
+ $av-enable-grid-auto:         true !default;
+ $av-enable-grid-rev:          true !default;
+
+
+  /**
+   * General Theme Settings
+   */
+
+  $background-positions:  (
+    "--bottom-center"   "bottom center",
+    "--top-center"      "top center",
+    "--left-top"        "left top",
+    "--right-top"       "right top",
+    "--left-bottom"     "left bottom",
+    "--right-bottom"    "right bottom"
+  ) !default;
+
+  $height-paddings:  (
+   "--1-of-1"   100%,
+   "--1-of-2"   50%,
+   "--1-of-3"   33.3%,
+   "--1-of-4"   25%
+  ) !default;
+
+  // custom widths variabls
+  $custom-width-class-prefix: "c-w";
+  $custom-width-gutter: 40px;
+  $custom-width-mobile-gutter: 17px;
+  $custom-widths:  (
+    "--20"   20,
+    "--25"   25,
+    "--30"   30,
+    "--33"   33,
+    "--40"   40,
+    "--45"   45,
+    "--50"   50,
+    "--60"   60,
+    "--66"   66,
+    "--70"   60,
+    "--75"   75,
+    "--80"   80,
+    "--90"   90,
+    "--100"  100
+  ) !default;
+
+
+  /*================ Gutters/Section spacings ================*/
+ $xl-gutter : 84px;
+ $l-gutter  : 70px;
+ $m-gutter  : 54px;
+ $n-gutter  : 44px;
+ $s-gutter  : 32px;
+ $xs-gutter : 22px;
+
+ $mobile-xl-gutter : 35px;
+ $mobile-l-gutter  : 30px;
+ $mobile-m-gutter  : 22px;
+ $mobile-n-gutter  : 16px;
+ $mobile-s-gutter  : 12px;
+ $mobile-xs-gutter : 9px;
+
+ $gutters: (
+   "-xl" $xl-gutter $mobile-xl-gutter,
+   "-l"  $l-gutter  $mobile-l-gutter,
+   "-m"  $m-gutter  $mobile-m-gutter,
+   "-n"  $n-gutter  $mobile-n-gutter,
+   "-s"  $s-gutter  $mobile-s-gutter,
+   "-xs" $xs-gutter $mobile-xs-gutter
+ ) !default;
+
+ $gutter_properties: (
+   "mt"  "margin-top",
+   "mb"  "margin-bottom",
+   "pt"  "padding-top",
+   "pb"  "padding-bottom",
+   "pl"  "padding-left",
+   "pr"  "padding-right"
+ ) !default;
+
+
+/*============================================================================
+  Avalanche | MIT License | @colourgarden
+  ============================================================================*/
+
+ /**
+  * LOGIC aka THE MAGIC
+  */
+ @function escape-numerator($numerator, $namespace: '') {
+   @if ($namespace == '') {
+     $numerator-as-string: inspect($numerator);
+     $escaped-numerator: '';
+
+     // Loop through all digits in the numerator and escape individually
+     @for $i from 1 through str-length($numerator-as-string) {
+       $digit: str-slice($numerator-as-string, $i, $i);
+       $escaped-numerator: $escaped-numerator+\3+$digit;
+     }
+
+     @return $escaped-numerator;
+   }
+
+   @else {
+     @return $numerator;
+   }
+ }
+
+ @function av-create-width-class-name($style, $numerator, $denominator, $breakpoint-alias) {
+
+   $class-name: null;
+
+   @if $style == 'fraction' or $style == 'fragment' {
+     // Set delimiter as slash or text
+     $delimiter: if($style == 'fraction', \/, -of-);
+     $escaped: escape-numerator($numerator, $av-width-class-namespace);
+     $class-name: #{$av-width-class-namespace}#{$escaped}#{$delimiter}#{$denominator}#{$breakpoint-alias};
+   }
+
+   @else {
+     $class-width: floor(($numerator / $denominator) * 100);
+     $class-name: #{$av-width-class-namespace}#{$class-width}#{$breakpoint-alias};
+   }
+
+   @return $class-name;
+
+ }
+
+ @function avCreateBlockClassName($modifier: '') {
+   @if $modifier == '' {
+     @return #{$av-namespace};
+   }
+
+   @return #{$av-namespace}#{$av-modifier-class-chain}#{$modifier};
+ }
+
+ @function avCreateElementClassName($modifier: '') {
+   @if $modifier == '' {
+     @return #{$av-namespace}#{$av-element-class-chain}#{$av-element-name};
+   }
+
+   @return #{$av-namespace}#{$av-element-class-chain}#{$av-element-name}#{$av-modifier-class-chain}#{$modifier};
+ }
+
+ @mixin av-create-widths($widths, $breakpoint-alias: null) {
+
+   // Initialise an empty utility map that will eventually contain all our classes
+   $pseudo-class-map: ();
+
+   // Loop widths
+   @each $denominator in $widths {
+
+     // If 1=1, 2=2, 3=3; @for will skip over so create 1/1 class manually
+     @if ($denominator == 1) {
+
+       // Create 1/1 class
+       $class-name: av-create-width-class-name($av-width-class-style, 1, 1, $breakpoint-alias);
+
+       .#{$class-name} {
+         width: 100%;
+       }
+     }
+
+     @else {
+
+       // Loop widths as fractions
+       @for $numerator from 1 to $denominator {
+
+         // Create class name and set width value
+         $class-name: av-create-width-class-name($av-width-class-style, $numerator, $denominator, $breakpoint-alias);
+         $width-value: percentage($numerator / $denominator);
+
+         // Is this width already in our utility map?
+         $duplicate: false;
+         @each $class-map in $pseudo-class-map {
+           $alias: nth($class-map, 1);
+           $class: nth($class-map, 2);
+
+           @if ($width-value == $alias) {
+             $duplicate: $class;
+           }
+         }
+
+         // Create width class
+         .#{$class-name} {
+           @if $duplicate {
+             @extend .#{$duplicate};
+           }
+
+           @else {
+             width: $width-value;
+           }
+         }
+       }
+     }
+   }
+ }
+
+ @mixin av-mq($alias) {
+   $breakpoint-found: false;
+
+   @each $breakpoint in $av-breakpoints {
+     $alias_: nth($breakpoint, 1);
+     $query: nth($breakpoint, 2);
+
+     @if ($alias_ == $alias and $query) {
+       $breakpoint-found: true;
+
+       @media #{$query} {
+         @content;
+       }
+     }
+   }
+
+   // If alias exists, print out media query
+   @if $breakpoint-found == false {
+     @warn 'Breakpoint "#{$alias}" does not exist';
+   }
+ }
+
+ /**
+  * GRID LAYOUT
+  */
+ .#{avCreateBlockClassName()} {
+   display: block;
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   margin-left: -($av-gutter);
+   font-size: 0;
+ }
+
+ .#{avCreateElementClassName()} {
+   box-sizing: border-box;
+   display: inline-block;
+   width: 100%;
+   padding: 0;
+   padding-left: $av-gutter;
+   margin: 0;
+   vertical-align: top;
+   font-size: 1rem;
+ }
+
+ @if $av-enable-grid-center {
+   .#{avCreateBlockClassName('center')} {
+     text-align: center;
+
+     > .#{avCreateElementClassName()} {
+       text-align: left;
+     }
+   }
+ }
+
+ @if $av-enable-grid-cell-center {
+   .#{avCreateElementClassName('center')} {
+     display: block;
+     margin: 0 auto;
+   }
+ }
+
+ @if $av-enable-grid-right {
+   .#{avCreateBlockClassName('right')} {
+     text-align: right;
+
+     > .#{avCreateElementClassName()} {
+       text-align: left;
+     }
+   }
+ }
+
+ @if $av-enable-grid-middle {
+   .#{avCreateBlockClassName('middle')} {
+     > .#{avCreateElementClassName()} {
+       vertical-align: middle;
+     }
+   }
+ }
+
+ @if $av-enable-grid-bottom {
+   .#{avCreateBlockClassName('bottom')} {
+     > .#{avCreateElementClassName()} {
+       vertical-align: bottom;
+     }
+   }
+ }
+
+ @if $av-enable-grid-flush {
+   .#{avCreateBlockClassName('flush')} {
+     margin-left: 0;
+
+     > .#{avCreateElementClassName()} {
+       padding-left: 0;
+     }
+   }
+ }
+
+ @if $av-enable-grid-tiny {
+   .#{avCreateBlockClassName('tiny')} {
+     margin-left: -($av-gutter / 4);
+
+     > .#{avCreateElementClassName()} {
+       padding-left: ($av-gutter / 4);
+     }
+   }
+ }
+
+ @if $av-enable-grid-small {
+   .#{avCreateBlockClassName('small')} {
+     margin-left: -($av-gutter / 2);
+
+     > .#{avCreateElementClassName()} {
+       padding-left: ($av-gutter / 2);
+     }
+   }
+ }
+
+ @if $av-enable-grid-large {
+   .#{avCreateBlockClassName('large')} {
+     margin-left: -($av-gutter * 2);
+
+     > .#{avCreateElementClassName()} {
+       padding-left: ($av-gutter * 2);
+     }
+   }
+ }
+
+ @if $av-enable-grid-huge {
+   .#{avCreateBlockClassName('huge')} {
+     margin-left: -($av-gutter * 4);
+
+     > .#{avCreateElementClassName()} {
+       padding-left: ($av-gutter * 4);
+     }
+   }
+ }
+
+ @if $av-enable-grid-auto {
+   .#{avCreateBlockClassName('auto')} {
+     > .#{avCreateElementClassName()} {
+       width: auto;
+     }
+   }
+ }
+
+ @if $av-enable-grid-rev {
+   .#{avCreateBlockClassName('rev')} {
+     direction: rtl;
+
+     > .#{avCreateElementClassName()} {
+       direction: ltr;
+     }
+   }
+ }
+
+ /**
+  * GRID WIDTHS
+  */
+
+ // Loop default widths
+ @include av-create-widths($av-widths);
+
+ // If responsive flag enabled, loop breakpoint widths
+ @if $av-enable-responsive {
+   @each $breakpoint in $av-breakpoints {
+     $alias: nth($breakpoint, 1);
+     $query: nth($breakpoint, 2);
+
+     // Create each media query
+     @media #{$query} {
+       @include av-create-widths($av-widths, #{$av-breakpoint-class-chain}#{$alias});
+     }
+   }
+ }
+
+
+/*================ UTILS ================*/
+/*================ Mixins ================*/
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  // sass-lint:disable
+  *zoom: 1;
+}
+
+/*============================================================================
+  Prefix mixin for generating vendor prefixes.
+  Based on https://github.com/thoughtbot/bourbon/blob/v4-stable/app/assets/stylesheets/addons/_prefixer.scss
+
+  Usage:
+    // Input:
+    .element {
+      @include prefix(transform, scale(1), ms webkit spec);
+    }
+
+    // Output:
+    .element {
+      -ms-transform: scale(1);
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+==============================================================================*/
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      -webkit-#{$property}: $value;
+    } @else if $prefix == moz {
+      -moz-#{$property}: $value;
+    } @else if $prefix == ms {
+      -ms-#{$property}: $value;
+    } @else if $prefix == o {
+      -o-#{$property}: $value;
+    } @else if $prefix == spec {
+      #{$property}: $value;
+    } @else  {
+      @warn 'Unrecognized prefix: #{$prefix}';
+    }
+  }
+}
+
+@mixin visually-hidden() {
+  // sass-lint:disable no-important
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+@mixin visually-shown($position: inherit) {
+  // sass-lint:disable no-important
+  position: $position !important;
+  overflow: auto;
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+
+/**
+ * Convert font-size from px to rem with px fallback
+ *
+ * @param $size - the value in pixel you want to convert
+ *
+ * e.g. p {@include fontSize(12px);}
+ *
+ */
+
+// Function for converting a px based font-size to rem.
+@function calculateRem($size) {
+  $remSize: $size / $font-size-base;
+  @return #{$remSize}rem;
+}
+
+// Includes a fall back px declaration as well as the calculated rem value.
+@mixin rem($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+/**
+ * Clamps, aka truncates, multi-line text. Note that non-webkit browsers will
+ * not see the ellipsis ¯\_(ツ)_/¯
+ * @param {Value}          $font-size     - Font size of the text
+ * @param {Unitless Value} $line-height   - Line height of the text; **must be a unitless value**
+ * @param {Number}         $lines-to-show - Number of lines to show
+ * @example scss
+ * p {
+ *   @include line-clamp($font-size: 16px, $line-height: 1.5, $lines-to-show: 3);
+ * }
+ */
+@mixin line-clamp(
+  $font-size,
+  $line-height,
+  $lines-to-show
+) {
+  @if unitless($line-height) == false {
+    $line-height: create-unitless-line-height($font-size, $line-height);
+  }
+
+  display: block; // Fallback for non-webkit browsers
+  display: -webkit-box;
+  font-size: $font-size;
+  height: ($font-size * $line-height * $lines-to-show); // Fallback for non-webkit browsers
+  line-height: $line-height;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines-to-show;
+}
+
+/*================ Responsive Show/Hide Helper ================*/
+@mixin responsive-display-helper($grid-breakpoint-type: '') {
+  // sass-lint:disable no-important
+  .show#{$grid-breakpoint-type} {
+    display: block !important;
+  }
+
+  .hide#{$grid-breakpoint-type} {
+    display: none !important;
+  }
+}
+
+/*================ Responsive Text Alignment Helper ================*/
+@mixin responsive-text-align-helper($grid-breakpoint-type: '') {
+  // sass-lint:disable no-important
+  .text-left#{$grid-breakpoint-type} {
+    text-align: left !important;
+  }
+
+  .text-right#{$grid-breakpoint-type} {
+    text-align: right !important;
+  }
+
+  .text-center#{$grid-breakpoint-type} {
+    text-align: center !important;
+  }
+}
+
+/*================ Responsive Custom widths Helper ================*/
+@mixin responsive-custom-widths-helper($class-prefix, $gutter, $grid-breakpoint-type: '') {
+  @each $position in $custom-widths {
+    $class_modifier : nth($position, 1);
+    $value          : nth($position, 2);
+
+    .#{$class-prefix}#{$class_modifier}#{$grid-breakpoint-type} {
+      width: calc(#{$value}% - #{$gutter - ($gutter * $value)/100});
+    }
+  }
+}
+
+/*================ Responsive Background Position Helper ================*/
+@mixin responsive-background-position-helper($grid-breakpoint-type: '') {
+  @each $position in $background-positions {
+    $class_modifier : nth($position, 1);
+    $value          : nth($position, 2);
+
+    .background-container.background-container#{$class_modifier}#{$grid-breakpoint-type} {
+      background-position: #{$value };
+    }
+  }
+}
+
+/*================ Responsive Paddings & margins (gutters) ================*/
+@mixin responsive-gutters($grid-breakpoint-type: '') {
+  @each $size in $gutters {
+    $size_class_modifier : nth($size, 1);
+    $value_lap-and-up    : nth($size, 2);
+    $value_pocket        : nth($size, 3);
+
+    @each $property in $gutter_properties {
+      $property_class_modifier : nth($property, 1);
+      $css_property   : nth($property, 2);
+
+      .#{$property_class_modifier}#{$size_class_modifier} {
+        #{$css_property}: #{$value_pocket};
+      }
+
+      .#{$property_class_modifier}#{$size_class_modifier},
+      .#{$property_class_modifier}#{$size_class_modifier}--lap-and-up {
+        @include av-mq($lap-and-up) {
+          #{$css_property}: #{$value_lap-and-up};
+        }
+      }
+
+      @include av-mq($pocket) {
+        .#{$property_class_modifier}#{$size_class_modifier}--pocket {
+          #{$css_property}: #{$value_pocket};
+        }
+      }
+    }
+  }
+}
+
+
+@mixin transform($transform) {
+  @include prefix(transform, $transform, ms webkit spec);
+}
+
+@mixin transition($transition) {
+  @include prefix(transition, $transition, ms webkit spec);
+}
+
+@mixin user-select($value: none) {
+  @include prefix('user-select', #{$value}, moz ms webkit spec);
+}
+
+/*================ Responsive Classes ================*/
+@include responsive-display-helper   ();
+@include responsive-text-align-helper();
+@include responsive-background-position-helper ();
+@include responsive-gutters();
+
+
+.#{$custom-width-class-prefix} {
+  margin-right: #{$custom-width-gutter};
+  width: 100%;
+}
+
+@include responsive-custom-widths-helper($custom-width-class-prefix, $custom-width-gutter);
+
+@each $breakpoint in $av-breakpoints {
+  $alias_: nth($breakpoint, 1);
+  $query : nth($breakpoint, 2);
+
+  @include av-mq($alias_) {
+    @include responsive-display-helper   ('#{$av-breakpoint-class-chain}#{$alias_}');
+    @include responsive-text-align-helper('#{$av-breakpoint-class-chain}#{$alias_}');
+    @include responsive-background-position-helper ('#{$av-breakpoint-class-chain}#{$alias_}');
+  }
+}
+
+/*================ Flexbox prefix ================*/
+/**
+  REF: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_flex-box.scss
+ */
+
+@mixin display-flexbox() {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%; // necessary for ie10
+}
+
+@mixin flex-wrap($value: nowrap) {
+  @include prefix(flex-wrap, $value, webkit moz ms spec);
+}
+
+@mixin flex-direction($value) {
+  @include prefix(flex-direction, $value, webkit moz ms spec);
+}
+
+@mixin align-items($value: stretch) {
+  $alt-value: $value;
+
+  @if $value == 'flex-start' {
+    $alt-value: start;
+  } @else if $value == 'flex-end' {
+    $alt-value: end;
+  }
+
+  // sass-lint:disable no-misspelled-properties
+  -ms-flex-align: $alt-value;
+  @include prefix(align-items, $value, webkit moz ms o spec);
+}
+
+@mixin flex($value: 0 1 auto) {
+  @include prefix(flex, $value, webkit moz ms spec);
+}
+
+@mixin flex-basis($width: auto) {
+  // sass-lint:disable no-misspelled-properties
+  -ms-flex-preferred-size: $width;
+  @include prefix(flex-basis, $width, webkit moz spec);
+}
+
+@mixin align-self($align: auto) {
+  // sass-lint:disable no-misspelled-properties
+  -ms-flex-item-align: $align;
+  @include prefix(align-self, $align, webkit spec);
+}
+
+@mixin flex-order($order: 0) {
+  // sass-lint:disable no-misspelled-properties
+  -ms-flex-order: $order;
+  @include prefix(order, $order, webkit spec);
+}
+
+@mixin align-content($align: center) {
+  @include prefix(align-content, $align, webkit ms spec);
+}
+
+@mixin justify-content($justify: flex-start) {
+  @include prefix(justify-content, $justify, webkit ms spec);
+}
+
+/*================ ellipsis ================*/
+@mixin with-ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/*================ COMMON ================*/
+/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+
+html {
+  line-height: 1.15; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+
+figcaption,
+figure,
+main { /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+
+details, /* 1 */
+menu {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Scripting
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+
+template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10-.
+ */
+
+[hidden] {
+  display: none;
+}
+
+/*================ Helper Classes ================*/
+.clearfix {
+  @include clearfix();
+}
+
+.visually-hidden {
+  @include visually-hidden();
+}
+
+.js-focus-hidden:focus {
+  outline: none;
+}
+
+.label-hidden {
+  @include visually-hidden();
+
+  // No placeholders, so force show labels
+  .no-placeholder & {
+    @include visually-shown();
+  }
+}
+
+.visually-shown {
+  @include visually-shown();
+}
+
+// Only show when JS is not supported
+.no-js:not(html) {
+  display: none;
+
+  .no-js & {
+    display: block;
+  }
+}
+
+// Only show when JS is supported
+.js {
+  .no-js & {
+    display: none;
+  }
+}
+
+// Only show when browser cookies are not supported
+.supports-no-cookies:not(html) {
+  display: none;
+
+  html.supports-no-cookies & {
+    display: block;
+  }
+}
+
+// Only show when browser cookies are supported
+.supports-cookies {
+  html.supports-no-cookies & {
+    display: none;
+  }
+}
+
+/*============================================================================
+  Skip to content button
+    - Overrides .visually-hidden when focused
+==============================================================================*/
+/*
+.skip-link:focus {
+  @include visually-shown(absolute);
+  color: $color-body-text;
+  background-color: $color-body;
+  padding: $gutter / 2;
+  z-index: $z-index-skip-to-content;
+  transition: none;
+}
+*/
+
+
+
+/***** Lazy loading helpers *****/
+.lazy-effect {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    max-width: 100%;
+
+    z-index: 5;
+    opacity: 0;
+  }
+
+  &.lazy-effect--skeleton {
+    background-color: rgba(0, 0, 0, .07);
+
+    &:after {
+      content: '';
+
+      position: absolute;
+      display: block;
+
+      width: 100%; height: 100%;
+      top: 0; left: 0;
+
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+      animation: loading 1.5s infinite;
+
+      z-index: 10;
+    }
+
+    &.lazy-effect--skeleton-round
+    , &.lazy-effect--skeleton-square {
+      padding-top: 100%;
+      // img:not(.z131-loaded) { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    }
+
+    &.lazy-effect--skeleton-round {
+      -webkit-mask-image: -webkit-radial-gradient(white, black); // safari hack to hide the skeleton from showing outside the circle.
+      overflow: hidden;
+      border-radius: 50%;
+    }
+  }
+
+  &.lazy-effect--end {
+    img {
+      @include transition(#{'opacity .3s ease-out'});
+
+      opacity: 1;
+      z-index: 15;
+    }
+
+    &.lazy-effect--skeleton {
+      background-color: transparent;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/**
+ * Background Image container
+ *
+ * responsive background position classes are generated using the @mixin responsive-background-position-helper
+ * Structure: .background-container--$position--$responsive_class
+ * Example:   => general class            : .background-container--bottom-center { .. }
+ *            => responsive pocket class  : .background-container--bottom-center--pocket { .. }
+ *            => responsive handheld class: .background-container--bottom-center--handheld { .. }
+ */
+.background-container {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*================ Icons ================*/
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: currentColor;
+
+  .no-svg & {
+    display: none;
+  }
+}
+
+.icon--wide {
+  width: 40px;
+}
+
+svg,
+symbol {
+  &.icon:not(.icon--full-color) {
+    circle,
+    ellipse,
+    g,
+    line,
+    path,
+    polygon,
+    polyline,
+    rect {
+      fill: inherit;
+      stroke: inherit;
+    }
+  }
+
+}
+
+/*============================================================================
+  A generic way to visually hide content while
+  remaining accessible to screen readers (h5bp.com)
+==============================================================================*/
+.icon-fallback-text {
+  @include visually-hidden();
+
+  .no-svg & {
+    @include visually-shown(static);
+  }
+}
+
+/*================ Payment Icons ================*/
+.payment-icons {
+  @include prefix('user-select', 'none', moz ms webkit spec);
+  cursor: default;
+}
+
+/*================ Shopify icon on password page ================*/
+/*.icon-shopify-logo {
+  width: 1.5 * $font-size-base * 120 / 35;
+  height: 1.5 * $font-size-base;
+}
+*/
+
+/*================ Rich Text Editor ================*/
+.rte {
+  img {
+    height: auto;
+  }
+
+  table {
+    table-layout: fixed;
+  }
+
+  ul,
+  ol {
+  //  margin: 0 0 ($gutter / 2) $gutter;
+  }
+
+  // Match the styles from RTE nested lists
+  ul {
+    list-style: disc outside;
+
+    ul {
+      list-style: circle outside;
+
+      ul {
+        list-style: square outside;
+      }
+    }
+  }
+}
+
+.text-center.rte,
+.text-center .rte {
+  ul,
+  ol {
+    margin-left: 0;
+    list-style-position: inside;
+  }
+}
+
+// allow table to scroll for tables in the RTE since we don't know
+// how many columns they will contain. Class added by JS.
+// sass-lint:disable no-misspelled-properties
+.rte-table {
+  max-width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// This class is wrapped around YouTube/Vimeo embeds in the RTE
+// to make them responsive and prevent layout breaking
+.rte__video-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  height: auto;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// This class is wrapped around tables in the RTE
+// to prevent layout breaking with a scrollable parent
+.rte__table-wrapper {
+  max-width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*============================================================================
+  Responsive tables, defined with .responsive-table on table element.
+==============================================================================*/
+@include av-mq($pocket) {
+  .responsive-table {
+    width: 100%;
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: block;
+    }
+
+    // IE9 table layout fixes
+    tr,
+    td {
+      float: left;
+      clear: both;
+      width: 100%;
+    }
+
+    th,
+    td {
+      display: block;
+      text-align: right;
+      padding: $gutter / 2;
+      margin: 0;
+    }
+
+    td::before {
+      content: attr(data-label);
+      float: left;
+      text-align: center;
+      padding-right: 10px;
+    }
+  }
+
+  // Add a keyline between rows
+  .responsive-table-row + .responsive-table-row,
+  tfoot > .responsive-table-row:first-child {
+    position: relative;
+    margin-top: 10px;
+    padding-top: $gutter / 2;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: $gutter / 2;
+      right: $gutter / 2;
+      border-bottom: 1px solid $border_color;
+    }
+  }
+}
+
+/*============================================================================
+  Form scaffolding
+    - Selectors setup for you to style form elements how you want
+    - Focus, error, and disabled states are set to be extended
+==============================================================================*/
+input,
+textarea,
+select {
+  border: 1px solid $color-border;
+  border-radius: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 6px 10px;
+  &:focus {
+    border: 1px solid $color-border--focus;
+    outline: none !important;
+  }
+
+  &[disabled] {
+    cursor: default;
+    background-color: $color-disabled;
+    border-color: $color-disabled-border;
+  }
+}
+
+textarea {
+  min-height: 100px;
+}
+
+/*================ Custom select style ================*/
+select {
+  @include prefix(appearance, none, webkit moz spec);
+  background-position: right center;
+  background: {
+    image: url($svg-select-icon);
+    repeat: no-repeat;
+    position: right 10px center;
+    color: transparent;
+  }
+  padding-right: 28px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  cursor: pointer;
+  width: 100%;
+
+  /*================ Hide the svg arrow in IE9 ================*/
+  .ie9 & {
+    padding-right: 10px;
+    background-image: none;
+  }
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/*================ Error styles ================*/
+input,
+select,
+textarea {
+  &.input-error {
+    border-color: $color-error;
+    background-color: $color-error-bg;
+    color: $color-error;
+  }
+}
+
+
+/*================ MODULES ================*/
+/*================ Giftcard Template ================*/
+.template-giftcard {
+  header {
+    margin-top: 50px;
+  }
+  main {
+    padding: 0px 0 20px 0;
+  }
+}
+
+.giftcard-qr {
+  margin-top: 10px;
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.apple-wallet-image {
+  display: block;
+  margin: 0 auto;
+}
+
+.gift-card__image {
+  max-width: 300px;
+}
+
+.print-giftcard {
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/*================ Print Giftcard Styles ================*/
+@media print {
+  @page {
+    margin: 0.5cm;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  html,
+  body {
+    // sass-lint:disable no-color-literals
+    background-color: #fff;
+    color: #000;
+  }
+
+  .print-giftcard,
+  .apple-wallet {
+    display: none;
+  }
+}
+
+/*! Flickity v2.2.0
+https://flickity.metafizzy.co
+---------------------------------------------- */
+.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-button{position:absolute;background:hsla(0,0%,100%,.75);border:none;color:#333}.flickity-button:hover{background:#fff;cursor:pointer}.flickity-button:focus{outline:0;box-shadow:0 0 0 5px #19F}.flickity-button:active{opacity:.6}.flickity-button:disabled{opacity:.3;cursor:auto;pointer-events:none}.flickity-button-icon{fill:currentColor}.flickity-prev-next-button{top:50%;width:44px;height:44px;border-radius:50%;transform:translateY(-50%)}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button .flickity-button-icon{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}
+
+
+/*================ CUSTOM ================*/
+/******************************
+SCSS ZERANCE 131
+******************************/
+
+/*================ global ================*/
+
+html {
+  font-size: $base-text-font-size;
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+body {
+  color: $text-color;
+  background: $background;
+  font-family: $text-font-family;
+  font-weight: $text-font-weight;
+  font-style: $text-font-style;
+  line-height: 1.6;
+}
+
+a {
+  color: initial;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/*================ Heading ================*/
+
+.heading {
+  color: $heading-color;
+  font-family: $heading-font-family;
+  font-weight: $heading-font-weight;
+  font-style: $heading-font-style;
+  @if $uppercase-heading {
+    text-transform: uppercase;
+  }
+}
+
+.z-h1 { font-size: 2rem; }
+.z-h2 { font-size: 1.8rem; }
+.z-h3 { font-size: 1.6rem; }
+.z-h4 { font-size: 1.4rem; }
+.z-h5 { font-size: 1.2rem; }
+.z-h6 { font-size: 1rem; }
+
+.rte {
+  h1, h2, h3, h4, h5, h6 {
+    @extend .heading;
+  }
+}
+
+/*================ Zerance utilities ================*/
+
+.relative {position:relative;}
+.absolute {position: absolute;}
+.flex {display: flex;}
+.only-mobile {display: none;}
+.align-center {text-align: center;}
+.align-left {text-align: left;}
+.align-right {text-align: right;}
+.full-width { width:100%;}
+.image-container {
+  width:100%;
+  img { width:100%; }
+}
+.hide {display: none;}
+.reset-font { font-size: 0;}
+.order-1 { order: 1;}
+.order-2 { order: 2;}
+.order-3 { order: 3;}
+.no-margin { margin:0 !important;}
+.mt-10 { margin-top:10px !important;}
+.mt-20 { margin-top:20px !important;}
+.mb-10 { margin-bottom:10px !important;}
+.mb-20 { margin-bottom:20px !important;}
+
+
+@include av-mq($pocket) { /* pocket */
+  .only-desktop {display: none;}
+  .only-mobile {display: inline-block;}
+}
+
+@media #{$lap-and-up} {
+  .hide--lap-and-up { display: none; }
+}
+
+@media #{$pocket} {
+  .hide--pocket { display: none; }
+}
+
+/*================ Container ================*/
+
+.container {
+  max-width: 1440px;
+  width: 90%;
+  margin: auto;
+}
+.container--small {
+  max-width: 1080px;
+  width: 90%;
+  margin: auto;
+}
+
+.container--full {
+  max-width: 100%;
+  width:100%;
+}
+
+/*================ Page Content ================*/
+
+.page-content {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.page-content--fit-screen {
+  display: flex;
+  min-height: calc(100vh - 200px);
+  align-items: center;
+  justify-content: center;
+}
+
+@supports (--css: variables) {
+	.page-content--fit-screen {
+		min-height: calc(var(--window-height) - (var(--header-height)) - 40px);
+	}
+}
+
+
+
+/*================ Buttons ================*/
+
+.button {
+  @include prefix('user-select', 'none', moz ms webkit spec);
+  @include prefix(appearance, none, webkit moz spec);
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  border: 0;
+}
+
+.button {
+  background: transparent;
+  border: 1px solid black;
+  padding: 6px 10px;
+  max-width: 100%;
+  background: $button_background;
+  color: $button_text_color;
+  font-family: $heading-font-family;
+  font-weight: $heading-font-weight;
+  font-style: $heading-font-style;
+  &:hover {
+    color: $button_background;
+    background: $button_text_color;
+  }
+}
+
+.button--invert {
+  background: $button_text_color;
+  color: $button_background;
+  &:hover {
+    color: $button_text_color;
+    background: $button_background;
+  }
+}
+
+.button--no-hover {
+  &:hover {
+    color: $button_text_color;
+    background: $button_background;
+  }
+}
+
+.button--full {
+  width:100%;
+}
+
+
+.link {
+  color: $link-color;
+  cursor:pointer;
+  text-decoration: underline;
+  -webkit-text-decoration-color: rgba($link-color, 0.6);
+  text-decoration-color: rgba($link-color, 0.6);
+  text-underline-position: under;
+  -webkit-transition: color 0.2s ease-in-out, -webkit-text-decoration-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, -webkit-text-decoration-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out, -webkit-text-decoration-color 0.2s ease-in-out;
+  -webkit-appearance: none !important;
+  border:0;
+  background: transparent;
+  &:hover {
+    color: $text-color;
+    -webkit-text-decoration-color: rgba($text-color, 0.6);
+    text-decoration-color: rgba($text-color, 0.6);
+  }
+  &.text--invert {
+    color:$text_invert_color;
+    text-decoration: underline;
+  }
+}
+
+.input {
+  margin: 5px;
+  border-color:$border-color;
+  padding: 13px 10px;
+  font-family: $heading-font-family;
+  font-weight: $heading-font-weight;
+  font-style: $heading-font-style;
+}
+select.input {
+  color:$border-color;
+}
+.input--medium {
+  width: 320px;
+}
+.input--full { width:100%;}
+
+
+/*================ Hover image  ================*/
+
+.hover-image__container{
+  position : relative;
+  cursor: pointer;
+}
+.hover-image__secondary{
+  position: absolute;
+  display: none;
+  top: 0;
+}
+.hover-image__container:hover{
+  .hover-image__secondary{display: block;}
+}
+
+
+/*================ Other ================*/
+
+.error {
+  color:$error_color;
+}
+
+.errors {
+  color:$error_color;
+  ul {
+    padding: 0;
+    list-style: none;
+    color:$error_color;
+  }
+}
+
+.responsive-table {
+  th, td {
+    padding: 7px 20px;
+    box-sizing: border-box;
+    border: 1px solid $border_color;
+  }
+}
+
+.price--highlight {
+  color:$product_on_sale_color;
+}
+
+.page-header {
+  position: relative;
+  text-align: left;
+}
+
+.text--invert {
+  color:$text_invert_color;
+}
+
+@include av-mq($pocket) {
+  .page-header {
+    left: 0;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+.position--left-center {
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(-5%, -50%);
+}
+
+.position--middle-center {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.position--right-center {
+  text-align: right;
+  position: absolute;
+  top: 50%;
+  left: 95%;
+  transform: translate(-95%, -50%);
+}
+
+.position--left-bottom {
+  text-align: left;
+  position: absolute;
+  top: 90%;
+  left: 5%;
+  transform: translate(-5%, -90%);
+}
+
+.position--center-bottom {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 90%;
+  transform: translateY(-90%);
+}
+
+.position--right-bottom {
+  text-align: right;
+  position: absolute;
+  top: 90%;
+  left: 95%;
+  transform: translate(-95%, -90%);
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+
+@include av-mq($pocket) {
+  .position--left-center,
+  .position--right-center,
+  .position--left-bottom,
+  .position--center-bottom,
+  .position--right-bottom {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: unset;
+    transform: translateY(-50%);
+  }
+}
+
+
+/************* special studio zerance *******************/
+
+.made-with-zerance {
+  position:relative;
+  img {
+    width: 25px;
+    position: absolute;
+    left: calc(100% + 8px);
+    top: -5px;
+  }
+}
+
+
+/*================ SECTION ================*/
+.contact__title,
+.contact__subtitle {
+	text-align: center;
+}
+
+.contact__field {
+	padding-bottom: $gutter;
+	.input {
+		margin:0;
+	}
+}
+
+.contact__label {
+	display: none;
+}
+
+.list-collections__content {
+	padding-bottom: calc(#{$gutter} - 5px);
+}
+
+.list-collections__link {
+	min-width: 120px;
+	text-align: center;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.list-collections__container img {
+	object-fit: cover;
+}
+
+.not-found__url {
+	text-decoration: none;
+}
+
+.products-list {
+	margin-top: 40px;
+	margin-bottom: 15px;
+}
+
+.products-list__image {
+	width: 100%;
+	object-fit: cover;
+}
+
+.products-list__title {
+	margin: 8px 0 5px 0;
+}
+
+.products-list__text p {
+	margin: 5px 0;
+}
+
+.products-list__link {
+	text-decoration: none;
+	color: black;
+}
+
+.products-list .grid__cell {
+	margin-bottom: 40px;
+}
+
+.products-list .carousel:after {
+	content: 'flickity';
+	display: none;
+}
+
+@include av-mq($lap-and-up) {
+	.products-list .carousel:after {
+		content: '';
+	}
+}
+
+/** banner utils **/
+
+.height--50vh { height:50vh; }
+.height--60vh { height:60vh; }
+.height--70vh { height:70vh; }
+.height--80vh { height:80vh; }
+.height--90vh { height:90vh; }
+.banner__image--full-screen {	height: 100vh; }
+
+@supports (--css: variables) {
+	.banner__image--full-screen {
+		height: calc(var(--window-height) - (var(--header-height)));
+	}
+}
+
+.image--position-center-top { object-position: center top; }
+.image--position-center-middle { object-position: center center; }
+.image--position-center-bottom { object-position: center bottom; }
+.image--position-left-top { object-position: left top; }
+.bmage--position-left-center { object-position: left center; }
+.image--position-left-bottom { object-position: left bottom; }
+.image--position-right-top { object-position: right top; }
+.image--position-right-center { object-position: right center; }
+.image--position-right-bottom { object-position: right bottom; }
+
+/** banner **/
+
+.banner {
+	margin: auto;
+	.carousel-cell {
+		height: auto;
+	}
+}
+
+.banner-content {
+	width: 100%;
+	position: relative;
+	video {
+		width: 100%;
+		object-fit: cover;
+		display: inline-block;
+	}
+}
+
+.banner__video {
+	width: 100%;
+    overflow: hidden;
+}
+
+.banner__image {
+	object-fit: cover;
+}
+
+.banner__text {
+	color: $heading-color;
+	width: 550px;
+	max-width: 95%;
+	margin:auto;
+}
+
+.banner {
+	.flickity-page-dots {
+		bottom:25px;
+		.dot {
+			background: #fff;
+		}
+	}
+}
+
+.collection__header {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.product-item__cascade {
+	transform:translateY(30%);
+	margin-bottom: 30px;
+}
+
+.product-grid__image-container {
+	position: relative;
+}
+
+.product-grid__image-container--hover {
+	&:hover {
+		.product-grid__image--first {
+			opacity: 0;
+		}
+		.product-grid__image--second {
+			opacity: 1;
+		}
+	}
+}
+
+.product-grid__image {
+	transition: .2s;
+}
+
+.product-grid__image--second {
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	object-fit: cover;
+}
+
+@include av-mq($pocket) {
+	.product-item__cascade {
+		transform: initial;
+	}
+}
+
+.adresses {
+  input:not([type="checkbox"]) {
+    width:100%;
+    margin-bottom: 8px;
+  }
+}
+
+#shopify-section-header {
+	width:100%;
+	top:0;
+	z-index: 6;
+  position:sticky;
+  top:0;
+}
+
+.header {
+	background: $header_background;
+	color:$header_heading_color;
+  width:100%;
+	a {color:$header_heading_color;}
+	svg {fill:$header_heading_color;}
+	z-index: 10;
+	h1 { font-size: 0;}
+  .relative {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 6px, rgba(0, 0, 0, 0.1) 0px 0px 1px;
+    z-index: 10;
+  	background: $header_background;
+  }
+	.side-nav__icon-close {
+		display: none;
+	}
+	&.side-nav-open {
+		.side-nav__icon-menu {
+			display: none;
+		}
+		.side-nav__icon-close {
+			display: block;
+		}
+	}
+}
+
+.header-container {
+	transition: .2s;
+	padding: 7px 0;
+	font-weight : 400;
+}
+
+.header__logo-image, .header__logo-image svg {
+  height: auto;
+}
+
+.header__main-menu {
+  .header__menu-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    background: white;
+  	background: $header_background;
+    z-index: 5;
+    width: 100%;
+    transition: .2s;
+    @include prefix(transform, translateY(-100%), o moz ms webkit spec);
+    z-index: 5;
+    &.active {
+      @include prefix(transform, translateY(0), o moz ms webkit spec);
+    }
+  }
+}
+
+.header__menu-items {
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+
+.header__menu-item {
+	a{cursor : pointer;}
+	display: inline-block;
+  padding: 10px 15px;
+	&:first-of-type {
+		padding-left: 0;
+	}
+	&:last-of-type {
+		padding-right: 0;
+	}
+}
+
+.header-h1 {
+	line-height: 0;
+	font-size: 0;
+}
+
+@media #{$pocket} {
+	.header-container {
+		padding: 16px 0px;
+		box-sizing: border-box;
+	}
+}
+
+
+/*** mega menu ***/
+
+.header__menu-item:hover .header__submenu {
+	opacity: 1;
+	height: auto;
+}
+
+.header__submenu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right:0;
+	width:100%;
+	background: $header_background;
+	color:$header_heading_color;
+	padding: 0;
+	opacity: 0;
+	z-index: 9999;
+	height: 0px;
+	overflow: hidden;
+	.megamenu-image .hover-image__container {line-height: 0;}
+	a{background:transparent;}
+}
+
+.header__submenu-grid {
+  border-top: 1px solid #d9d9d9;
+}
+
+.header__cart-count{
+	min-width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	margin-left: 4px;
+	line-height: 21px;
+	vertical-align: middle;
+	font-size: 11px;
+	text-align: center;
+	display: inline-block;
+	margin-top: -2px;
+}
+
+.megamenu__title {
+  margin-top: 20px;
+  margin-bottom:20px;
+}
+
+.megamenu__link-all {
+  margin-top:20px;
+  margin-bottom: 35px;
+}
+
+
+/** side nav **/
+$side_nav_header_color_light:grey;
+
+.side-nav {
+	position: fixed;
+	transition: .2s;
+	transform: translateX(-100%);
+	left:0;
+	min-height: 100vh;
+	width: 100%;
+	background: $navigation_background;
+	color: $header_heading_color;
+	text-align: center;
+	overflow: hidden;
+	bottom: 0;
+	box-sizing: border-box;
+	&.active {
+		transform: translateX(0%);
+	}
+}
+
+
+@supports (--css: variables) {
+	.side-nav {
+		min-height: calc(var(--window-height) - (var(--header-height)));
+		z-index: 9;
+		top:(var(--header-height));
+	}
+}
+
+
+.side-nav__header {
+	white-space: nowrap;
+	overflow: auto;
+	padding: 25px;
+	box-sizing: border-box;
+	background: $side_nav_images_background;
+}
+
+.side-nav__image-container {
+	display: inline-block;
+	margin-right: 15px;
+	&:last-of-type {
+		margin-right: 0;
+	}
+	img {
+		height: 160px;
+		width: auto;
+		border-radius: $side_nav_images_border_radius;
+	}
+	.side-nav__absolute-text {
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+		text-align:center;
+		color:$side_nav_images_text_color;
+		white-space: normal;
+	}
+}
+
+.side-nav__menus {
+	padding: 25px;
+	text-align: left;
+}
+
+.side-nav__menu {
+	display: block;
+}
+
+.side-nav__menu-item {
+	display: block;
+	padding: 15px 0;
+	border-bottom: 1px solid $side_nav_images_background;
+	&.active {
+		.side-nav__arrow {
+			@include prefix(transform, translateY(-50%) rotate(180deg), o moz ms webkit spec);
+		}
+	}
+}
+
+.side-nav__arrow {
+	position:absolute;
+	right: 5px;
+	top: 50%;
+	transition: .5s;
+	transform-origin: center;
+	@include prefix(transform, translateY(-50%) rotate(0), o moz ms webkit spec);
+}
+
+.side-nav__child {
+	display: none;
+	.side-nav__menu-item {
+		padding-left: 15px;
+	}
+}
+
+.side-nav__menu--little {
+	color:$side_nav_header_color_light;
+	font-size: 0.9rem;
+	margin-top: 20px;
+	.side-nav__menu-item {
+		border:0;
+		padding: 10px 0;
+	}
+}
+
+
+@media #{$pocket} {
+	.header__main-menu--submenu-mobile .header__navigation {
+		display: block;
+	}
+	.header__main-menu .header__menu-items {
+		white-space: nowrap;
+		display: block;
+		padding: 0 20px;
+		overflow: auto;
+		max-width: 100%;
+    box-sizing: border-box;
+	}
+}
+
+.footer {
+	margin-top: 40px;
+	padding: 4rem 0 4rem;
+	border-top: 1px solid $border_color;
+	background: $footer_background;
+	color:$footer_text_color;
+	a {
+		color:$footer_text_color;
+	}
+}
+
+.footer__links ul {
+	margin: 0;
+}
+
+.footer__link {
+	display: inline-block;
+	padding-bottom: 10px;
+}
+
+.footer__copypright {
+	margin-top: 3rem;
+}
+
+.footer__social {
+	display: flex;
+}
+
+.social-media {
+	margin-left: 20px;
+	display: inline-block;
+}
+
+.social-media--small svg {
+	width: 20px;
+	height: 20px;
+}
+.social-media--medium svg {
+	width: 30px;
+	height: 30px;
+}
+.social-media--large svg {
+	width: 40px;
+	height: 40px;
+}
+
+@include av-mq($pocket) { /* pocket */
+	.footer__link {
+		display: block;
+		padding-left: 0;
+	}
+}
+
+.side-cart-overlay  {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom:0;
+  width: 100vw;
+  z-index: 5;
+  visibility: hidden;
+  opacity: 0;
+  background: $side_cart_overlay_color;
+  transition: .2s;
+  &.active {
+    opacity: $side_cart_opacity;
+    visibility: visible;
+  }
+}
+
+.side-cart {
+  position: fixed;
+  z-index: 8;
+  left:100%;
+  width:550px;
+  max-width: 100%;
+  top:0;
+  bottom:0;
+  background: $side_cart_background;
+  color:$side_cart_text_color;
+  transition: .4s;
+  &.open {
+    transform: translateX(-100%);
+  }
+}
+
+@supports (--css: variables) {
+  .side-cart-overlay--below-header {
+    height: calc(var(--window-height) - (var(--header-height)));
+    top:(var(--header-height));
+    z-index: 3;
+  }
+	.side-cart--below-header {
+		height: calc(var(--window-height) - (var(--header-height)));
+    top:(var(--header-height));
+    z-index: 4;
+	}
+}
+
+
+.cart__empty-state {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color:$side_cart_text_color;
+}
+
+.cart-header {
+  padding: 20px 30px;
+  text-align: left;
+  position: relative;
+}
+
+.cart-close {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  font-size: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.cart__title {
+  margin: 0;
+  text-align: center;
+}
+
+.cart__items {
+  padding: 0 25px;
+}
+
+.cart-item {
+  padding: 20px 0;
+  &:first-of-type { border-top:0; }
+}
+
+.cart-item__grid {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.cart-item__right {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item__remove {
+  font-weight: 900;
+  cursor: pointer;
+  text-align: right;
+}
+
+.cart-item__title {
+}
+
+.cart-item__total {
+  text-align: center;
+}
+
+.cart-item__qty {
+  display: inline-flex;
+}
+
+.cart-item__qty-item {
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid;
+  padding: 0 13px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.cart-footer {
+  border-top:1px solid $side_cart_text_color;
+  position: absolute;
+  bottom:0;
+  left: 0;
+  right:0;
+  padding:20px;
+}
+
+.cart-footer__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-footer__checkout {
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+}
+
+@include av-mq($pocket) {
+  .side-cart {
+    width:100%;
+  }
+  .cart__items {
+      padding: 0 20px;
+      height: calc(100vh - 400px);
+      overflow: scroll;
+      .z-h4 {
+        font-size: 13px;
+      }
+      .grid__cell {
+        padding-left: 10px;
+      }
+      .grid {
+        margin-left: -10px;
+      }
+  }
+  .cart-item {
+    padding: 0px 0 10px;
+  }
+  .cart-item__qty-item {
+    height: 27px;
+    padding: 0 9px;
+    line-height: 25px;
+  }
+  .cart-item__right {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    text-align: right;
+    margin-left: 0;
+  }
+  .cart-close {
+    left: 30px;
+    top: 35px;
+  }
+  .cart-header {
+    padding: 33px 32px;
+  }
+  .cart__title {
+    display: none;
+  }
+  .cart-footer {
+    padding: 20px 0;
+  }
+  .cart-footer__continue {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .cart-footer__content {
+    display: block;
+  }
+  .cart-footer__content-top {
+    padding: 0 15px;
+  }
+  .cart-footer__total-price {
+    text-align: center;
+    margin-bottom: 15px;
+    span { display: block;}
+  }
+  .cart-footer__checkout {
+    border-top: 1px solid $side_cart_text_color;
+    width: 100%;
+    padding-top: 20px;
+    text-decoration: none;
+    .arrow-right { display: none; }
+  }
+}
+
+@include av-mq($thumb) {
+  .cart-item__qty-item {
+    height: 21px;
+    padding: 0 5px;
+    line-height: 20px;
+  }
+}
+
+
+/** sass for page cart **/
+
+.page-cart {
+  position: relative;
+  .cart-footer {
+    position: static;
+    border-top: 0;
+  }
+  .cart__empty-state {
+    position: relative;
+  }
+  .cart-header {
+    display: none;
+  }
+}
+
+@include av-mq($pocket) {
+  .page-cart {
+    width:100%;
+    .cart-footer__continue {
+      top:-35px;
+    }
+    .cart__items {
+      height: auto;
+    }
+    .cart-footer__checkout {
+      border-top:0;
+      text-decoration: underline;
+    }
+    .cart__empty-state {
+      top: 0%;
+      left: 0%;
+      transform: none;
+    }
+  }
+}
+
+.product__mini-image {
+  margin-bottom: 15px;
+  font-size: 0;
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 50%;
+  &.active {
+    border:2px solid black;
+  }
+  img {
+    border-radius: 50%;
+  }
+}
+
+.product__type {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.product__title {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/** product pictos **/
+
+.product__pictos {
+  margin-top: 10px;
+}
+
+.product__picto {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/** accordion product **/
+
+.product-accordion {
+  margin-top: 25px;
+}
+
+.product-accordion__question {
+  width: 100%;
+  color: blue;
+  background: lightblue;
+  padding: 17px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.product-accordion__answer {
+  margin-bottom: 20px;
+}
+
+.product-accordion__rotate {
+  transition: .2s;
+}
+
+.product-accordion__question[aria-expanded="true"] {
+  .product-accordion__rotate {
+    @include prefix(transform, rotate(-135deg), o moz ms webkit spec);
+  }
+}
+
+
+/** media queries **/
+
+@include av-mq($lap-and-up) {
+  .product__images-container {
+    @include prefix(position, sticky, webkit spec);
+    top: 100px;
+  }
+}
+
+@include av-mq($pocket) {
+  .template-product main {
+    padding-top: 0;
+  }
+  .product__type {
+    margin-top: 30px;
+  }
+}
+
+.password__header {
+  margin-bottom: 3rem;
+}
+
+.password__login {
+  margin-top: 3rem;
+}
+
+.password__studio-zerance {
+  background-image: url("https://cdn.shopify.com/s/files/1/0074/2726/0483/files/zerance1_300x.png?v=1567692752");
+  padding-top: 4rem;
+  display: inline-block;
+  background-size: 31px;
+  background-repeat: no-repeat;
+  background-position: 100% center;
+  overflow: visible;
+}
+
+
+/*================ SNIPPETS ================*/
+/* Swatches Styles */
+
+
+
+
+.swatch {
+  .header {
+    margin: 0.5em 0;
+    font-weight: bold;
+  }
+}
+/* Hide radio buttons.*/
+.swatch input {
+  display:none;
+}
+
+.swatch label {
+  /* To give width and height */
+  /* Color swatches contain no text so they need to have a width. */
+  width:40px !important;
+  height:40px !important;
+  line-height:40px !important;
+  /* No extra spacing between them */
+  margin:0;
+  font-size:14px;
+  text-align:center;
+  line-height:31px;
+  white-space:nowrap;
+  text-transform:uppercase;
+}
+
+.swatch-element label { padding:0; }
+.color.swatch-element label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    .swatch--label {
+      display: initial;
+    }
+  }
+}
+
+.swatch--label {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 2px 30px;
+  border: 1px solid #f9f9f9;
+  display: none;
+}
+
+
+.triangle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0px;
+  height: 0px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 10px solid #f9f9f9;
+  margin-bottom: -12px;
+}
+
+/* Styling selected swatch */
+/* Slightly raised */
+.swatch input:checked + label {
+  // background: $text_color;
+  font-weight: bold;
+  // color:$text_invert_color;
+}
+.swatch .swatch-element {
+  float:left;
+  -webkit-transform:translateZ(0); /* webkit flicker fix */
+  -webkit-font-smoothing:antialiased; /* webkit text rendering fix */
+  /* Spacing between buttons */
+  margin: 0;
+  margin-right: 20px;
+  /* To position the sold out graphic and tooltip */
+  position:relative;
+  @media #{$pocket} {
+    label {
+      text-align: center;
+    }
+    input:focus {
+      outline: 0;
+    }
+  }
+}
+.swatch .color {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  &:hover {
+    z-index: 2;
+  }
+  @media #{$pocket} {
+    width: 30px;
+    height: 30px;
+    label {
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
+}
+/* Image with the cross in it */
+.crossed-out { position:absolute; width:100%; height:100%; left:0; top:0; }
+.swatch .swatch-element .crossed-out { display:none; }
+.swatch .swatch-element.soldout .crossed-out { display:block; }
+.swatch .swatch-element.soldout label {
+  filter: alpha(opacity=60); /* internet explorer */
+  -khtml-opacity: 0.6;      /* khtml, old safari */
+  -moz-opacity: 0.6;       /* mozilla, netscape */
+  opacity: 0.6;           /* fx, safari, opera */
+}
+.swatch.error {
+  background-color:#E8D2D2!important;
+  color:#333!important;
+  padding:1em;
+  border-radius:5px;
+}
+.swatch.error p {
+  margin:0.7em 0;
+}
+.swatch.error p:first-child {
+  margin-top:0;
+}
+.swatch.error p:last-child {
+  margin-bottom:0;
+}
+.swatch.error code {
+  font-family:monospace;
+}
+

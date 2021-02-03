@@ -1,0 +1,20 @@
+/*! concept-usine v1.0.0 | (c) 2021 STUDIO ZERANCE | http://link-to-your-git-repo.com */
+/* line 1, src/scss/componants/global/colors.scss */
+.color-red {
+  color: red !important;
+}
+
+/* line 1, src/scss/componants/sections/sections1.scss */
+.section-xyz {
+  display: none;
+}
+
+/* line 1, src/scss/componants/theme/theme1.scss */
+.body {
+  opacity: 0.6;
+}
+
+/* line 5, src/scss/main.scss */
+.body {
+  display: none !important;
+}

@@ -1,0 +1,111 @@
+{%- capture class_desktop -%}
+banner__image {{ section.settings.banner_desktop_height }} {{ block.settings.image_position }}
+{%- endcapture -%}
+
+{%- capture class_mobile -%}
+banner__image {{ section.settings.banner_mobile_height }}
+{%- endcapture -%}
+
+{% for block in section.blocks %}
+{%- capture options_video -%}
+{% unless block.settings.video_autoplay == false %}
+autoplay
+{% endunless %}
+{% unless block.settings.video_mute == false %}
+muted
+{% endunless %}
+{% unless block.settings.video_loop == false %}
+loop
+{% endunless %}
+{% unless block.settings.video_controls == false %}
+controls
+{% endunless %}
+{%- endcapture -%}
+{% endfor %}
+
+{% assign lazyload = true %}
+{% if section.settings.active_lazyload == false %}
+{% assign lazyload = false %}
+{% endif %}
+
+{% if section.settings.page_dots == true %}
+	{% assign page_dots = '"pageDots": "true"' %}
+{% else %}
+	{% assign page_dots = '"pageDots": "false"' %}
+{% endif %}
+
+{% if section.settings.show_arrow == true %}
+	{% assign show_arrow = '"prevNextButtons": "true"' %}
+{% else %}
+	{% assign show_arrow = '"prevNextButtons": "false"' %}
+{% endif %}
+
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="banner-text-link">
+	<div class="container--full banner">
+		{% if section.blocks.size > 1 %}
+		<div class="carousel carousel-main" data-banner='{ {{page_dots}}, {{ show_arrow }} }' >
+		{% endif %}
+		{% for block in section.blocks %}
+		{% assign banner_content = blank %}
+		{% assign banner_resp = blank %}
+		{% if block.type == 'image' %}
+			<div class="{% if section.blocks.size > 1 %}carousel-cell{% endif %} block-{{ block.id }} banner-content">
+				{% assign banner_content = block.settings.image %}
+				{% assign banner_resp = block.settings.image_mobile %}
+				{% if banner_content != blank %}
+					<div class="image-container {% if banner_resp != blank %} only-desktop{% endif %}">
+						{% include 'image' with img : banner_content, class : class_desktop, lazyload : lazyload %}
+					</div>
+					{% if banner_resp != blank %}
+					<div class="image-container only-mobile">
+						{% include 'image' with img : banner_resp, class : class_mobile, lazyload : lazyload %}
+					</div>
+					{% endif %}
+				{% endif %}
+				<div class="{{ block.settings.text_position }}">
+					<div class="banner__text">
+						<h2 class="{% unless block.settings.text_invert == false %}text--invert {% endunless %}banner__title heading">{{ block.settings.title }}</h2>
+						<p class="{% unless block.settings.text_invert == false %}text--invert {% endunless %} banner__description">{{ block.settings.text }}</p>
+						<a class="{% unless block.settings.text_invert == false %}text--invert {% endunless %}link" href="{{ block.settings.url }}">{{ block.settings.link }}</a>
+					</div>
+				</div>
+			</div>
+		{% elsif block.type == 'video' %}
+			<div class="{% if section.blocks.size > 1 %}carousel-cell 1/1{% endif %} block-{{ block.id }} banner-content banner__video">
+				{% assign banner_content = block.settings.video %}
+				{% assign banner_resp = block.settings.video_mobile %}
+				{% if banner_content != blank %}
+					<div class="{% if banner_resp != blank %}only-desktop{% endif %}">
+						<video class="{{ class_desktop }}" {{ options_video }}>
+							<source src="{{ banner_content }}" type="video/webm">
+							<source src="{{ banner_content }}" type="video/mp4">
+							Sorry, your browser doesn't support embedded videos.
+						</video>
+					</div>
+					{% if banner_resp != blank %}
+					<div class="only-mobile">
+						<video class="{{ class_mobile }}" {{ options_video }}>
+							<source src="{{ block.settings.video_mobile }}" type="video/webm">
+							<source src="{{ block.settings.video_mobile }}" type="video/mp4">
+							Sorry, your browser doesn't support embedded videos.
+						</video>
+					</div>
+					{% endif %}
+				{% else %}
+				banner blank {{ banner_content }}
+				{% endif %}
+				<div class="{{ block.settings.text_position }}">
+					<div class="banner__text">
+						<h2 class="{% unless block.settings.text_invert == false %}text--invert {% endunless %}banner__title heading">{{ block.settings.title }}</h2>
+						<p class="banner__description {% unless block.settings.text_invert == false %}text--invert {% endunless %}">{{ block.settings.text }}</p>
+						<a class="{% unless block.settings.text_invert == false %}text--invert {% endunless %}link" href="{{ block.settings.url }}">{{ block.settings.link }}</a>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		{% endfor %}
+		{% if section.blocks.size > 1 %}
+		</div>
+		{% endif %}
+	</div>
+</section>

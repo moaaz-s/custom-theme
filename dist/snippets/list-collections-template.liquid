@@ -1,0 +1,66 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="list-collections-template">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h1 class="list-collections__title heading align-center">{{ section.settings.title | escape }}</h1>
+    {% endif %}
+
+    {% if section.settings.all_collections %}
+      <div class="grid">
+        {% for collection in collections %}
+            <div class="1/{{ section.settings.size_mobile }}--thumb 1/{{ section.settings.size }} grid__cell list-collections__content">
+              {% unless collection.handle == 'frontpage' %}
+                <a class="reset-font" href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
+                  {% if collection.image != blank %}
+                    {{ collection | img_url: 'master' | img_tag: collection.title }}
+                  {% elsif collection.products.first != blank %}
+                    {{ collection.products.first | img_url: 'master' | img_tag: collection.title }}
+                  {% else %}
+                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                    {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                  {% endif %}
+                </a>
+
+                <div class="list-collections__link">
+                  <h2 class="list-collections__title-collection heading">{{ collection.title }}</h2>
+                  <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ section.settings.button_all }}</a>
+                </div>
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="grid">
+        {% for block in section.blocks %}
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% unless collection.url == blank %}
+          <div class="1/{{ section.settings.size_mobile }}--thumb 1/{{ section.settings.size }} grid__cell list-collections__content">
+            <div class="relative" {{ block.shopify_attributes }}>
+
+              <a class="reset-font" href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
+                {% if collection.image != blank %}
+                  {{ collection | img_url: 'master' | img_tag: collection.title }}
+                {% elsif collection.products.first != blank %}
+                  {{ collection.products.first | img_url: 'master' | img_tag: collection.title }}
+                {% elsif collection == empty %}
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                  {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                {% endif %}
+              </a>
+
+              <div class="list-collections__link">
+                <h2 class="list-collections__title-collection heading">{{ collection.title }}</h2>
+                <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ block.settings.button }}</a>
+              </div>
+              </a>
+            </div>
+          </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+
+      {% if section.blocks.size == 0 %}
+        {% include 'no-blocks' %}
+      {% endif %}
+    {% endif %}
+  </div>
+</section>

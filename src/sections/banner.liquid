@@ -1,0 +1,397 @@
+{% include 'banner' %}
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "active_lazyload",
+        "label": "Use lazyload for better speed (but low quality first second)",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "banner_desktop_height",
+        "label": "Slider height on desktop",
+        "options": [
+          {
+           "value": "height--50vh",
+           "label": "50%"
+          },
+          {
+           "value": "height--60vh",
+           "label": "60%"
+          },
+          {
+           "value": "height--70vh",
+           "label": "70%"
+          },
+          {
+           "value": "height--80vh",
+           "label": "80%"
+          },
+          {
+           "value": "height--90vh",
+           "label": "90%"
+          },
+          {
+           "value": "banner__image--full-screen",
+           "label": "Full screen"
+          }
+        ],
+        "default": "banner__image--full-screen"
+      },
+      {
+        "type": "select",
+        "id": "banner_mobile_height",
+        "label": "Slider height on mobile",
+        "options": [
+          {
+           "value": "height--50vh",
+           "label": "50%"
+          },
+          {
+           "value": "height--60vh",
+           "label": "60%"
+          },
+          {
+           "value": "height--70vh",
+           "label": "70%"
+          },
+          {
+           "value": "height--80vh",
+           "label": "80%"
+          },
+          {
+           "value": "height--90vh",
+           "label": "90%"
+          },
+          {
+           "value": "banner__image--full-screen",
+           "label": "Full screen"
+          }
+        ],
+        "default": "banner__image--full-screen"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_arrow",
+        "label": "Show arrow",
+        "default": true,
+        "info": "if block > 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "page_dots",
+        "label": "Show page dots",
+        "default": true,
+        "info": "if block > 1"
+      }
+	],
+	"blocks": [
+		{
+			"type": "image",
+			"name": "Slide image",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Banner image"
+				},
+				{
+					"type": "image_picker",
+					"id": "image_mobile",
+					"label": "Banner image mobile"
+				},
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title",
+					"default": "If you can't handle it, candle it"
+				},
+				{
+					"type": "text",
+					"id": "text",
+					"label": "Text"
+				},
+				{
+					"type": "checkbox",
+					"id": "text_invert",
+					"label": "Invert text color",
+					"default": false
+				},
+				{
+					"type": "select",
+					"id": "image_position",
+					"label": "Slide position desktop",
+					"options": [
+						{
+							"group": "Position",
+							"value": "image--position-center-top",
+							"label": "Position center top"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-center-middle",
+							"label": "Position center middle"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-center-bottom",
+							"label": "Position center bottom"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-left-top",
+							"label": "Position left top"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-left-center",
+							"label": "Position left center"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-left-bottom",
+							"label": "Position left bottom"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-right-top",
+							"label": "Position right top"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-right-center",
+							"label": "Position right center"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-right-bottom",
+							"label": "Position right bottom"
+						}
+					],
+					"default": "image--position-center-middle"
+				},
+				{
+					"type": "select",
+					"id": "text_position",
+					"label": "Text position desktop",
+					"options": [
+						{
+							"group": "Position",
+							"value": "position--left-center",
+							"label": "Position left center"
+						},
+						{
+							"group": "Position",
+							"value": "position--middle-center",
+							"label": "Position middle center"
+						},
+						{
+							"group": "Position",
+							"value": "position--right-center",
+							"label": "Position right center"
+						},
+						{
+							"group": "Position",
+							"value": "position--left-bottom",
+							"label": "Position left bottom"
+						},
+						{
+							"group": "Position",
+							"value": "position--center-bottom",
+							"label": "Position center bottom"
+						},
+						{
+							"group": "Position",
+							"value": "position--right-bottom",
+							"label": "Position right bottom"
+						}
+					],
+					"default": "position--middle-center"
+				},
+				{
+					"type": "text",
+					"id": "link",
+					"label": "Link text",
+					"default": "Shop now"
+				},
+				{
+					"type": "url",
+					"id": "url",
+					"label": "Link url"
+				}
+			]
+		},
+		{
+			"type": "video",
+			"name": "Slide video",
+			"settings": [
+				{
+					"type": "checkbox",
+					"id": "video_muted",
+					"label": "Mute video",
+					"default": true,
+					"info": "You can't autoplay a video if she is not muted"
+				},
+				{
+					"type": "checkbox",
+					"id": "video_autoplay",
+					"label": "Auto play video",
+					"default": true
+				},
+				{
+					"type": "checkbox",
+					"id": "video_loop",
+					"label": "Loop video",
+					"default": true
+				},
+				{
+					"type": "checkbox",
+					"id": "video_controls",
+					"label": "Show video controls",
+					"default": false
+				},
+				{
+					"type": "text",
+					"id": "video",
+					"label": "Video URL desktop",
+					"info":"Upload video in Settings > Files (20MO max)"
+				},
+				{
+					"type": "text",
+					"id": "video_mobile",
+					"label": "Video URL mobile",
+					"info":"Upload video in Settings > Files (20MO max)"
+				},
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title"
+				},
+				{
+					"type": "text",
+					"id": "text",
+					"label": "Text"
+				},
+				{
+					"type": "checkbox",
+					"id": "text_invert",
+					"label": "Invert text color",
+					"default": false
+				},
+				{
+					"type": "select",
+					"id": "image_position",
+					"label": "Slide position desktop",
+					"options": [
+						{
+							"group": "Position",
+							"value": "image--position-center-top",
+							"label": "Position center top"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-center-middle",
+							"label": "Position center middle"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-center-bottom",
+							"label": "Position center bottom"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-left-top",
+							"label": "Position left top"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-left-center",
+							"label": "Position left center"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-left-bottom",
+							"label": "Position left bottom"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-right-top",
+							"label": "Position right top"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-right-center",
+							"label": "Position right center"
+						},
+						{
+							"group": "Position",
+							"value": "image--position-right-bottom",
+							"label": "Position right bottom"
+						}
+					],
+					"default": "image--position-center-middle"
+				},
+				{
+					"type": "select",
+					"id": "text_position",
+					"label": "Text position desktop",
+					"options": [
+						{
+							"group": "Position",
+							"value": "position--left-center",
+							"label": "Position left center"
+						},
+						{
+							"group": "Position",
+							"value": "position--middle-center",
+							"label": "Position middle center"
+						},
+						{
+							"group": "Position",
+							"value": "position--right-center",
+							"label": "Position right center"
+						},
+						{
+							"group": "Position",
+							"value": "position--left-bottom",
+							"label": "Position left bottom"
+						},
+						{
+							"group": "Position",
+							"value": "position--center-bottom",
+							"label": "Position center bottom"
+						},
+						{
+							"group": "Position",
+							"value": "position--right-bottom",
+							"label": "Position right bottom"
+						}
+					],
+					"default": "position--middle-center"
+				},
+				{
+					"type": "text",
+					"id": "link",
+					"label": "Link text",
+					"default": "Shop now"
+				},
+				{
+					"type": "url",
+					"id": "url",
+					"label": "Link url"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Banner",
+			"category": "Image"
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="404-template">
+	<div class="container align-center">
+		<a class="not-found__url" href="{% if section.settings.url != blank %}{{ section.settings.url }}{% else %}/{% endif %}">
+			{% unless section.settings.image == blank %}
+				<h1 class="not-found__title heading">{{ section.settings.title }}</h1>
+			{% endunless %}
+			{% unless section.settings.image == blank %}
+				{{ section.settings.text }}
+			{% endunless %}
+			{% unless section.settings.image == blank %}
+				{% include 'image' with img : section.settings.image, class : 'not-found__img' %}
+			{% endunless %}
+			<div>
+				<button class="button">
+					{{ section.settings.button }}
+				</button>
+			</div>
+		</a>
+	</div>
+</section>

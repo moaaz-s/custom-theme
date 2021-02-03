@@ -1,0 +1,13 @@
+{% unless image == blank %}
+  <div class="grid__cell 1/6 megamenu-images__image hover-image__container">
+    <a class="{{ class }}" href="{{ url }}">
+      <img class="hover-zoom" src="{{ image | img_url : 'master' }}" alt="{{ image.alt }}">
+    	{% if image_hover %}
+    		<img class="hover-image__secondary" src="{{ image_hover | img_url : 'master' }}" alt="{{ image_hover.alt }}">
+    	{% endif %}
+      <div class="align-center megamenu-image__title">
+        {{ title }}
+      </div>
+    </a>
+  </div>
+{% endunless %}

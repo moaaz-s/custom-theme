@@ -1,0 +1,57 @@
+<nav role="navigation" class="header__navigation hide--pocket">
+  <ul class="header__menu-items">
+
+  {% for link in linklists[linklist].links %}
+  {% assign count_mini_menu = 0 %}
+  {% assign link_handle = link.title | handleize %}
+  {% for block in section.blocks %}
+  {% if block.settings.handle == link_handle %}
+  {% assign count_mini_menu = count_mini_menu | plus : 1 %}
+  {% else %}
+  {% endif %}
+  {% endfor %}
+
+    <li class="header__menu-item {% if link.active %}header__menu-item--active{% endif %}" >
+      <a href="{{ link.url }}">{{ link.title | escape }}</a>
+      {% if count_mini_menu > 0 %}
+      <div class="header__submenu">
+        <div class="container">
+          <div class="grid header__submenu-grid grid--large">
+            {% for block in section.blocks %}
+            {% if block.settings.handle == link_handle %}
+              {% if block.type == 'megamenu-images' %}
+              <div class="grid__cell {{ block.settings.size }} color--default">
+                <div class="heading z-h5">
+                  <div class="heading z-h4 megamenu__title">{{ block.settings.title }}</div>
+                  <div class="grid grid--small grid--center">
+                    {% include 'megamenu-image' with image_hover : block.settings.image_hover1, image : block.settings.image1, title : block.settings.title1, url : block.settings.url1 %}
+                    {% include 'megamenu-image' with image_hover : block.settings.image_hover2, image : block.settings.image2, title : block.settings.title2, url : block.settings.url2 %}
+                    {% include 'megamenu-image' with image_hover : block.settings.image_hover3, image : block.settings.image3, title : block.settings.title3, url : block.settings.url3 %}
+                    {% include 'megamenu-image' with image_hover : block.settings.image_hover4, image : block.settings.image4, title : block.settings.title4, url : block.settings.url4 %}
+                    {% include 'megamenu-image' with image_hover : block.settings.image_hover5, image : block.settings.image5, title : block.settings.title5, url : block.settings.url5 %}
+                    {% include 'megamenu-image' with arrow_button : true, image_hover : block.settings.image_hover6, image : block.settings.image6, title : block.settings.title6, url : block.settings.url6 %}
+                  </div>
+                </div>
+              </div>
+              {% unless block.settings.cta == blank %}
+              <div class="grid__cell megamenu__link-all">
+                <div class="align-center">
+                  <a href="{{ block.settings.url }}" class="link">{{ block.settings.cta }}</a>
+                </div>
+              </div>
+              {% endunless %}
+              {% endif %}
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+    </li>
+    {% if link.title contains 'Panier' or  link.title contains 'Cart' %}
+      {% include 'cart-count'%}
+    {% endif %}
+  {% endfor %}
+  </ul>
+</nav>

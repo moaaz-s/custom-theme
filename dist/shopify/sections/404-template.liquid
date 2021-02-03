@@ -1,0 +1,36 @@
+{% include '404-template' %}
+
+{% schema %}
+  {
+    "name": "404 page",
+    "settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title 404",
+			"default": "Page not found"
+		},
+		{
+			"type": "richtext",
+			"id": "text",
+			"label": "Text 404"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Image 404"
+		},
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button text",
+      "default": "Retourner à l'accueil"
+    },
+		{
+			"type": "url",
+			"id": "url",
+			"label": "Link 404"
+		}
+    ]
+  }
+{% endschema %}

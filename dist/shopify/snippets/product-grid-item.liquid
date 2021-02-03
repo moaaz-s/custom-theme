@@ -1,0 +1,41 @@
+{% if product.featured_image != blank %}
+	<a href="{{ product.url | within: collection }}">
+		<div class="image-container product-grid__image-container reset-font {% if hover == true %}{% unless product.images[1] == blank %}product-grid__image-container--hover{% endunless %}{% endif %}">
+      {% include 'image' with img : product.featured_image, class: 'product-grid__image product-grid__image--first' %}
+      {% unless product.images[1] == blank %}
+      {% include 'image' with img : product.images[1], class: 'product-grid__image product-grid__image--second' %}
+      {% endunless %}
+		</div>
+	</a>
+{% endif %}
+
+<p>
+	<a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+</p>
+<p>
+	{% if product.compare_at_price > product.price %}
+		{% if product.price_varies %}
+			{%- assign sale_price = product.price | money -%}
+			{{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+		{% else %}
+			{{ 'products.product.on_sale' | t }}
+			{{ product.price | money }}
+		{% endif %}
+	{% else %}
+		{% if product.price_varies %}
+			{%- assign price = product.price | money -%}
+			{{ 'products.product.from_text_html' | t: price: price }}
+		{% else %}
+			{{ product.price | money }}
+		{% endif %}
+	{% endif %}
+
+	{% if product.compare_at_price > product.price %}
+		<span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+		<s>{{ product.compare_at_price | money }}</s>
+	{% endif %}
+
+	{% unless product.available %}
+	{{ 'products.product.sold_out' | t }}
+	{% endunless %}
+</p>

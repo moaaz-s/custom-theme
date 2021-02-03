@@ -1,0 +1,82 @@
+{% comment %}
+   {% include 'image'
+      , with_effect     : true
+      , img             : picto
+      , classes         : ""
+      , dimensions      : "300x"
+      , responsiveSizes : false
+      , alt             : title
+   %}
+
+   {% include 'image'
+      , url             : "string url"
+      , alt             : title
+   %}
+{% endcomment %}
+
+{% assign __with_effect      = with_effect %}
+{% assign __shopify_image    = img %}
+{% assign __dimensions       = dimensions | default: "600x" %}
+{% assign __image_url        = url %}
+{% assign __classes          = classes %}
+{% assign __alt              = __shopify_image.alt | default: alt %}
+{% assign __default_alt      = shop.name | append: " " | append: shop.description %}
+
+{% if responsiveSizes == false %}
+   {% assign __responsive_sizes = responsiveSizes %}
+{% else %}
+   {% assign __responsive_sizes = true %}
+{% endif %}
+
+
+{% if __shopify_image != blank %}
+   {% capture __image_tag %}
+      <img class="lazyload {{ __classes }}"
+            data-aspectratio="{{ __shopify_image.aspect_ratio }}"
+         {% if __responsive_sizes %}
+            {% assign __image_src_template = __shopify_image | img_url: '1x1' | replace: '1x1.', '{width}x.' %}
+            data-src="{{ __image_src_template }}"
+            src="{{ __shopify_image | img_url: __dimensions }}"
+            data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+            data-sizes="auto"
+            data-parent-fit="contain"
+            alt="{{ __alt | default: __default_alt | escape | handleize }}"
+            {{attr}}
+         {% else %}
+            data-src="{{ __shopify_image | img_url: __dimensions }}"
+         {% endif %}
+      >
+   {% endcapture %}
+
+   {% if __with_effect == true %}
+      {% assign effect_id = __shopify_image | sha1 | prepend: 'lazy-effect-' %}
+      <style>
+         {{ effect_id | prepend: '.lazy-effect#' }} {
+            height: auto;
+            padding-bottom: {{ 100 | divided_by: __shopify_image.aspect_ratio }}%;
+         }
+      </style>
+      <div id="{{ effect_id }}" class="lazy-effect lazy-effect--skeleton">
+         {{ __image_tag }}
+      </div>
+   {% else %}
+      {{ __image_tag }}
+   {% endif  %}
+{% elsif __image_url != blank %}
+   <img src="{{ __image_url }}"
+      class=" {{ __classes }}"
+      {{attr}}
+      alt="{{ __alt | default: __default_alt }}"/>
+{% else %}
+   <!-- No image -->
+   {% comment %} TODO: Show a placeholder image {% endcomment %}
+{% endif %}
+
+
+{% assign __with_effect      = blank %}
+{% assign __responsive_sizes = blank %}
+{% assign __shopify_image    = blank %}
+{% assign __dimensions       = blank %}
+{% assign __image_url        = blank %}
+{% assign __classes          = blank %}
+{% assign __alt              = blank %}

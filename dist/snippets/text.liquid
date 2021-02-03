@@ -1,0 +1,21 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="text">
+  {% for block in section.blocks %}
+  <div class="{{ block.settings.container_size }}">
+    <div class="grid {% if block.settings.block_position == 'right' %}grid--right{% elsif block.settings.block_position == 'center'%}grid--center{% endif %}">
+      <div class="grid__cell {{ block.settings.block_size }}/12--lap-and-up 1/1--pocket">
+        {% unless block.settings.title == blank %}
+        <h2 class="{{ block.settings.title_alignment }} heading z-h2">{{ block.settings.title }}</h2>
+        {% endunless %}
+        {% unless block.settings.subtitle == blank %}
+        <h3 class="{{ block.settings.subtitle_alignment }} heading z-h3">{{ block.settings.subtitle }}</h3>
+        {% endunless %}
+        {% unless block.settings.text == blank %}
+        <div class="{{ block.settings.text_alignment }}">
+          {{ block.settings.text }}
+        </div>
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</section>

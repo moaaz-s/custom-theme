@@ -1,0 +1,346 @@
+{% assign is_side_nav_mega_menu_images = false %}
+{% for block in section.blocks %}
+  {% if block.type == 'side-nav-image' %}
+    {% assign is_side_nav_mega_menu_images = true %}
+  {% endif %}
+{% endfor %}
+
+<style>
+    .header__logo-image, .header__logo-image svg {
+      width: {{ section.settings.logo_max_width }}px;
+    }/**/
+</style>
+<header class="header">
+  <div class="relative">
+    <div class="header-container container">
+      <div class="grid grid--middle">
+        <div class="grid__cell 1/5 2/5--lap-and-up align-left">
+          <div class="hide--lap-and-up" data-header-toggle>
+            <span class="side-nav__icon-menu">{% include 'icon-hamburger' %}</span>
+            <span class="side-nav__icon-close">{% include 'icon-close' %}</span>
+          </div>
+          {% include 'header-nav' with linklist : section.settings.main_linklist %}
+        </div>
+        <div class="grid__cell 3/5 1/5--lap-and-up align-center">
+          {% if template.name == 'index' %}
+            <h1 class="no-margin header-h1" itemscope itemtype="http://schema.org/Organization">
+          {% else %}
+            <div class="no-margin header-h1" itemscope itemtype="http://schema.org/Organization">
+          {% endif %}
+              <a href="/" itemprop="url" class="header__logo-image">
+                {% if section.settings.svg_logo != blank %}
+                    {{ section.settings.svg_logo }}
+
+                {% elsif section.settings.logo != blank %}
+                  {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+                  <img src="{{ section.settings.logo | img_url: image_size }}"
+                       srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                       alt="{{ section.settings.logo.alt | default: shop.name }}"
+                       itemprop="logo">
+                {% else %}
+                  {{ shop.name }}
+                {% endif %}
+              </a>
+          {% if template.name == 'index' %}
+            </h1>
+          {% else %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="grid__cell 1/5 2/5--lap-and-up align-right">
+          <a class="hide--lap-and-up" href="/cart">
+            <div class="header__mobile-item" data-cart-toggle>
+              {% if cart.item_count > 0 %}
+        				<div id="CartCount" class="header__cart-count color--light {% if cart.item_count == 0 %}color--dark{% endif %}">
+        				  <span>{{ cart.item_count }}</span>
+        				</div>
+              {% endif %}
+              {% include 'icon-cart' %}
+            </div>
+          </a>
+          {% include 'header-nav' with linklist : section.settings.main_linklist2 %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="align-center header__main-menu{% if section.settings.show_submenu_mobile %} header__main-menu--submenu-mobile{% endif %}">
+    {% include 'header-nav' with linklist : section.settings.main_linklist3 %}
+  </div>
+</header>
+
+<div data-header-side-nav class="side-nav hide--lap-and-up">
+  <div>
+    {% if is_side_nav_mega_menu_images %}
+    <div class="side-nav__header">
+      {% for block in section.blocks %}
+        {% if block.type == 'side-nav-image' %}
+        <div class="side-nav__image-container relative">
+          <a href="{{block.settings.url}}">
+            {% include 'image' with img : block.settings.image %}
+            <div class="absolute heading z-h6 side-nav__absolute-text">
+              {{ block.settings.title }}
+            </div>
+          </a>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="side-nav__menus">
+      <ul class="side-nav__menu">
+        {% for link in linklists[section.settings.mobile_linklist].links %}
+          <li {% if link.links != blank %}data-submenu{% endif %}
+           class="side-nav__menu-item relative">
+            <a href="{{link.url}}">{{ link.title }}</a>
+            {% if link.links != blank %}
+            <span class="side-nav__arrow">{% include 'icon-arrow-down' %}</span>
+            {% endif %}
+          </li>
+          {% if link.links != blank %}
+            <ul class="side-nav__child">
+              {% for child_link in link.links %}
+              <li class="side-nav__menu-item">
+                <a href= "{{ child_link.url }}">{{ child_link.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <ul class="side-nav__menu side-nav__menu--little">
+        {% for link in linklists[section.settings.mobile_linklist2].links %}
+          <li class="side-nav__menu-item">
+            <a href="{{link.url}}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "svg_logo",
+        "label": "Logo SVG",
+        "info" : "Copier coller le SVG (Balises <svg></svg> et leur contenu)"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 450,
+        "step": 5,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 250
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist2",
+        "label": "2nd menu",
+        "default": "main-menu"
+    	},
+      {
+        "type": "link_list",
+        "id": "main_linklist3",
+        "label": "3nd menu",
+        "default": "main-menu"
+    	},
+      {
+        "type": "checkbox",
+        "id": "show_submenu_mobile",
+        "label": "Show submenu on mobile device",
+        "default": true
+      },
+      {
+        "type": "link_list",
+        "id": "mobile_linklist",
+        "label": "Menu mobile"
+      },
+      {
+        "type": "link_list",
+        "id": "mobile_linklist2",
+        "label": "Menu mobile 2"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "megamenu-images",
+        "name": "megamenu-images",
+        "settings": [
+          {
+            "type": "text",
+            "id": "handle",
+            "label": "Handle du menu"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Titre du menu"
+          },
+          {
+            "type": "text",
+            "id": "cta",
+            "label": "Call to action"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Url du cta"
+          },
+          {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_hover1",
+            "label": "Image hover"
+          },
+          {
+            "type": "text",
+            "id": "title1",
+            "label": "Titre"
+          },
+          {
+             "type":      "url",
+             "id":        "url1",
+             "label":     "Url du cta"
+          },
+          {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Image"
+          },{
+            "type": "image_picker",
+            "id": "image_hover2",
+            "label": "Image hover"
+          },
+          {
+            "type": "text",
+            "id": "title2",
+            "label": "Titre"
+          },
+          {
+             "type":      "url",
+             "id":        "url2",
+             "label":     "Url du cta"
+          },
+          {
+            "type": "image_picker",
+            "id": "image3",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_hover3",
+            "label": "Image hover"
+          },
+          {
+            "type": "text",
+            "id": "title3",
+            "label": "Titre"
+          },
+          {
+             "type":      "url",
+             "id":        "url3",
+             "label":     "Url du cta"
+          },
+          {
+            "type": "image_picker",
+            "id": "image4",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_hover4",
+            "label": "Image hover"
+          },
+          {
+            "type": "text",
+            "id": "title4",
+            "label": "Titre"
+          },
+          {
+             "type":      "url",
+             "id":        "url4",
+             "label":     "Url du cta"
+          },
+          {
+            "type": "image_picker",
+            "id": "image5",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_hover5",
+            "label": "Image hover"
+          },
+          {
+            "type": "text",
+            "id": "title5",
+            "label": "Titre"
+          },
+          {
+             "type":      "url",
+             "id":        "url5",
+             "label":     "Url du cta"
+          },
+          {
+            "type": "image_picker",
+            "id": "image6",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_hover6",
+            "label": "Image hover"
+          },
+          {
+            "type": "text",
+            "id": "title6",
+            "label": "Titre"
+          },
+          {
+             "type":      "url",
+             "id":        "url6",
+             "label":     "Url du cta"
+          }
+        ]
+      },
+      {
+        "type": "side-nav-image",
+        "name": "side-nav-image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Titre de l'image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "url de l'image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

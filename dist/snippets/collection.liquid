@@ -1,0 +1,51 @@
+<section id="section-{{ section.id }}" class="collection" data-section-id="{{ section.id }}" data-section-type="collection">
+{% paginate collection.products by section.settings.products_per_page %}
+
+<header role="banner">
+	{% unless section.settings.show_title == false and section.settings.show_description == false %}
+		<div class="collection__header {{ section.settings.container_size }}">
+			{% unless section.settings.show_title == false %}
+			<h1>{{ collection.title }}</h1>
+			{% endunless %}
+			{% if collection.description != blank %}
+				{% unless section.settings.show_description == false %}
+				<div class="rte">
+					{{ collection.description }}
+				</div>
+				{% endunless %}
+			{% endif %}
+		</div>
+	{% endunless %}
+</header>
+
+<div class="{{ section.settings.container_size }}">
+	<div class="grid {% if section.settings.block_position == 'right' %}grid--right{% elsif section.settings.block_position == 'center'%}grid--center{% endif %}">
+		<div class="grid__cell {{ section.settings.block_size }}/12--lap-and-up 1/1--pocket">
+			<div class="grid {% if section.settings.block_alignment == 'right' %}grid--right{% elsif section.settings.block_alignment == 'center'%}grid--center{% endif %}">
+			{% for product in collection.products %}
+				<div class="grid__cell 1/{{ section.settings.products_per_line_desktop }}--lap-and-up 1/{{ section.settings.products_per_line_mobile }}--pocket">
+
+					<div {% unless section.settings.show_cascade == false %} class="
+						{%- case section.settings.products_per_line_desktop -%}
+						{%- when 2 or 4 -%}
+						{%- cycle '', 'product-item__cascade' -%}
+						{%- when 3 -%}
+						{%- cycle '', 'product-item__cascade', '' -%}
+						{%- when 5 -%}
+						{%- cycle '', 'product-item__cascade', '', 'product-item__cascade', '' -%}
+						{%- endcase -%}" {% endunless %}>
+
+						{% include 'product-grid-item' with hover : section.settings.hover %}
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% if paginate.pages > 1 %}
+{% include 'pagination' %}
+{% endif %}
+{% endpaginate %}
+</section>

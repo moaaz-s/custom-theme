@@ -1,0 +1,45 @@
+{% comment %}
+ copy the content in the snippet cart-item and paste inside script tag
+{% endcomment %}
+
+{% raw %}
+<script data-cart-item type="text/x-handlebars-template">
+  <div class="cart-item">
+    <div class="grid cart-item__grid">
+      <div class="grid__cell 3/7 1/2--lap-and-up">
+        <div class="grid cart-item__grid">
+          <div class="grid__cell 1/2 1/4--lap-and-up">
+            <a href="{{ item_url }}">
+              <img src="{{ item_image }}" alt="{{ item_product_title }} - {{ item_variant_title }}">
+            </a>
+          </div>
+          <div class="grid__cell 1/2 3/4--lap-and-up relative">
+            <h2 class="cart-item__title  z-h6 heading">{{ item_product_title }} <span>{{ item_variant_title }}</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="grid__cell 4/7 1/2--lap-and-up">
+        <div class="grid cart-item__right">
+          <div class="grid__cell 1/2">
+            <div class="cart-item__qty">
+              <span data-cart-update-id="{{ item_variant_id }}" data-cart-quantity="{{ item_quantity_minus }}" class="cart-item__qty-item">-</span>
+              <span class="cart-item__qty-item">{{ item_quantity }}</span>
+              <span data-cart-update-id="{{ item_variant_id }}" data-cart-quantity="{{ item_quantity_plus }}" class="cart-item__qty-item">+</span>
+            </div>
+          </div>
+          <div class="cart-item__total grid__cell 1/4">
+            <span class="">
+              {{ item_line_price }}
+            </span>
+          </div>
+          <div data-cart-remove-id="{{ item_variant_id }}" class="cart-item__remove grid__cell 1/4">
+            <span class="">
+              &#10005;
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+{% endraw %}

@@ -1,0 +1,138 @@
+{% include 'collection' %}
+
+{% schema %}
+  {
+    "name": "Collection",
+    "settings": [
+		{
+			"type": "checkbox",
+			"id": "show_cascade",
+			"label": "Show products in cascade",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_title",
+			"label": "Show title collection",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_description",
+			"label": "Show description collection",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "products_per_page",
+			"min": 1,
+			"max": 32,
+			"step": 1,
+			"label": "Products per page",
+			"default": 16
+		},
+		{
+			"type": "range",
+			"id": "products_per_line_desktop",
+			"min": 2,
+			"max": 5,
+			"step": 1,
+			"label": "Products per line desktop",
+			"default": 4
+		},
+		{
+			"type": "range",
+			"id": "products_per_line_mobile",
+			"min": 1,
+			"max": 3,
+			"step": 1,
+			"label": "Products per line mobile",
+			"default": 2
+		},
+		{
+			"type": "range",
+			"id": "block_size",
+			"min": 1,
+			"max": 12,
+			"step": 1,
+			"label": "Block size",
+			"default": 12
+		},
+		{
+			"type": "select",
+			"id": "block_position",
+			"label": "Block position",
+			"options": [
+				{
+					"group": "Block position",
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"group": "Block position",
+					"value": "right",
+					"label": "Right"
+				},
+				{
+					"group": "Block position",
+					"value": "center",
+					"label": "Center"
+				}
+			],
+			"default": "left"
+		},
+		{
+			"type": "select",
+			"id": "block_alignment",
+			"label": "Block alignment",
+			"options": [
+			{
+				"group": "Alignment",
+				"value": "left",
+				"label": "Left"
+			},
+			{
+				"group": "Alignment",
+				"value": "center",
+				"label": "Center"
+			},
+			{
+				"group": "Alignment",
+				"value": "right",
+				"label": "Right"
+			}
+			],
+			"default": "center"
+		},
+		{
+			"type": "select",
+			"id": "container_size",
+			"label": "Container size",
+			"options": [
+				{
+					"group": "Container size",
+					"value": "container--small",
+					"label": "Small"
+				},
+				{
+					"group": "Container size",
+					"value": "container",
+					"label": "Normal"
+				},
+				{
+					"group": "Container size",
+					"value": "container--full",
+					"label": "Full"
+				}
+			],
+			"default": "container"
+		},
+    {
+      "type": "checkbox",
+      "id": "hover",
+      "label": "See 2nd image on hover",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

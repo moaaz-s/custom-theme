@@ -1,0 +1,169 @@
+<footer class="footer">
+  <div class="{{ section.settings.container_size }}">
+    {%- assign footer_linklist = section.settings.footer_linklist -%}
+    <div class="footer__container">
+
+      <div class="footer__links">
+        {% if linklists[footer_linklist].links.size > 0 %}
+          <div class="footer__menus grid">
+            {% for link in linklists[footer_linklist].links %}
+            <div class="footer__menu grid__cell 1/4--lap-and-up">
+              <li class="">
+                <a class="footer__link heading" href="{{link.url}}">{{ link.title }}</a>
+              </li>
+              {% if link.links != blank %}
+                <ul class="">
+                  {% for child_link in link.links %}
+                  <li class="">
+                    <a class="footer__sublink" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__copypright">
+          <small>
+            {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}.<br/>
+            <span class="made-with-zerance">Made with zerance by <a class="link" href="https://studio-zerance.fr" target="_blank">Studio Zerance
+              <img src="https://cdn.shopify.com/s/files/1/0074/2726/0483/files/zerance1_300x.png?v=1567692752" alt="made with love & zerance by Studio Zerance">
+            </a>
+          </small>
+        </div>
+        <div>
+          {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+          <ul class="footer__social {{ section.settings.social_icon }}">
+            {% for social in social_accounts %}
+              {%- assign social_handle = social | handleize -%}
+              {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+              {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+              {% if settings[social_link] != blank %}
+                <li>
+                  <a href="{{ settings[social_link] }}" class="social-media" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                    {% include social_icon %}
+                    <span class="icon-fallback-text">{{ social }}</span>
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %}
+  {% if section.settings.show_payment_icons %}
+    {% unless shop.enabled_payment_types == empty %}
+      {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' -%}
+
+      <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
+      <ul class="payment-icons">
+        {% for type in shop.enabled_payment_types %}
+          {% if payment_icons_available contains type %}
+            <li>
+              {%- assign icon_name = type | prepend: 'icon-' -%}
+              {% include icon_name %}
+              <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endunless %}
+  {% endif %}
+  {% endcomment %}
+
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_linklist",
+        "label": "First menu",
+        "default": "footer"
+      },
+      {
+        "type": "select",
+        "id": "menu_alignment",
+        "label": "Menu alignment",
+        "options": [
+          {
+            "group": "Alignment",
+            "value": "align-left",
+            "label": "Left"
+          },
+          {
+            "group": "Alignment",
+            "value": "align-center",
+            "label": "Center"
+          },
+          {
+            "group": "Alignment",
+            "value": "align-right",
+            "label": "Right"
+          }
+        ],
+        "default": "align-right"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social_icons",
+        "label": "Show social medias icons",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "social_icon",
+        "label": "Icon size",
+        "options": [
+          {
+            "value": "social-media--small",
+            "label": "Small"
+          },
+          {
+            "value": "social-media--medium",
+            "label": "Medium"
+          },
+          {
+            "value": "social-media--large",
+            "label": "Large"
+          }
+        ],
+        "default": "social-media--small"
+      },
+      {
+        "type": "select",
+        "id": "container_size",
+        "label": "Container size",
+        "options": [
+          {
+            "group": "Container size",
+            "value": "container--small",
+            "label": "Small"
+          },
+          {
+            "group": "Container size",
+            "value": "container",
+            "label": "Normal"
+          },
+          {
+            "group": "Container size",
+            "value": "container--full",
+            "label": "Full"
+          }
+        ],
+        "default": "container"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,150 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  {% if settings.jsonld_logo %}
+    {% assign image_size = settings.jsonld_logo.width | append:'x' %}
+    "logo": {{ settings.jsonld_logo | img_url: image_size | prepend: "https:" | json }},
+  {% endif %}
+
+  {%- assign social_accounts = 'facebook, twitter, instagram' | split: ',' -%}
+  {%- assign social_accounts_counts = 0 -%}
+  {% for social in social_accounts %}
+    {%- assign social_handle = social | handleize -%}
+    {% capture social_key %}social_{{ social_handle }}_link{% endcapture %}
+
+    {% if settings[social_key] != blank %}
+      {% assign social_accounts_counts = social_accounts_counts | add: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if social_accounts_counts > 0 %}
+    "sameAs": [
+      {% assign current_index = 0 %}
+      {% for social in social_accounts %}
+        {%- assign social_handle = social | handleize -%}
+        {% capture social_key %}social_{{ social_handle }}{% endcapture %}
+        {%- if settings[social_key] != blank -%}
+          {{ settings[social_key] | json }}
+          {% assign current_index = current_index | add: 1 %}
+        {%- endif -%}
+
+        {%- if social_accounts_counts > current_index -%},{%- endif -%}
+      {% endfor %}
+    ],
+  {% endif %}
+
+  "url": {{ shop.url | append: page.url | json }}
+}
+</script>
+
+{% if template.name == 'index' %}
+  {% assign potential_action_target = shop.url | append: "/search?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
+    }
+  </script>
+{% endif %}
+
+{% if template.name == "product" %}
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      "url": {{ shop.url | append: product.url | json }},
+      {%- if product.featured_image -%}
+          {%- assign image_size = product.featured_image.width | append: 'x' -%}
+          "image": [
+          {{ product.featured_image.src | img_url: image_size | prepend: "https:" | json }}
+          ],
+      {%- endif -%}
+      "description": {{ product.description | strip_html | json }},
+      {%- if current_variant.sku != nil -%}
+          "sku": {{ current_variant.sku | json }},
+      {%- endif -%}
+      "brand": {
+          "@type": "Thing",
+          "name": {{ product.vendor | json }}
+      },
+      "offers": [
+          {%- for variant in product.variants -%}
+          {
+              "@type" : "Offer",
+              {%- if variant.sku != blank -%}
+              "sku": {{ variant.sku | json }},
+              {%- endif -%}
+              "availability" : "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+              "price" : {{ variant.price | divided_by: 100.00 | json }},
+              "priceCurrency" : {{ cart.currency.iso_code | json }},
+              "url" : {{ shop.url | append: variant.url | json }}
+          }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+      ]
+    }
+    </script>
+{% endif %}
+
+<script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                        "@id": "{{ shop.domain }}",
+                        "name": "{{ shop.name }}"
+                    }
+                }
+
+                {% assign isSimple = false %}
+                {% if template.name == 'page' %}{% assign isSimple = true %}{% endif %}
+                {% if template.name == 'blog' %}{% assign isSimple = true %}{% endif %}
+                {% if template.name == 'collection' %}{% assign isSimple = true %}{% endif %}
+                {% if template.name == 'product' and collection.url == blank %}{% assign isSimple = true %}{% endif %}
+
+                ,{
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                            {% if isSimple %}
+                                "name": {{page_title  | json }},
+                                "@id": "{{ shop.domain }}{{ request.path }}"
+                            {% else %}
+                              {% if    template contains 'product' and collection.url %}
+                                  "name": {{collection.title | json }},
+                                  "@id": "{{ shop.domain }}{{ collection.url }}"
+                              {% elsif template contains 'article' %}
+                                  "name": {{ blog.title | json }},
+                                  "@id": "{{ shop.domain }}{{ blog.url }}"
+                              {% endif %}
+                            {% endif %}
+                    }
+                }
+
+                {% unless isSimple %}
+                    ,{
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "name": {{page_title  | json }},
+                            "@id": "{{ shop.domain }}{{ request.path }}"
+                        }
+                    }
+                {% endunless %}
+            ]
+        }
+</script>

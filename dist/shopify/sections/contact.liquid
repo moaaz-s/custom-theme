@@ -1,0 +1,90 @@
+{% include 'contact' %}
+
+{% schema %}
+{
+	"name": "Contact",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Page title",
+			"default": "Contact"
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"label": "Sub-title",
+			"default": "Sub-title"
+		}
+	],
+	"blocks": [
+		{
+			"name": "Text field",
+			"type": "text-field",
+			"settings": [
+				{
+					"type": "range",
+					"id": "size",
+					"min": 1,
+					"max": 4,
+					"step": 1,
+					"label": "Size field",
+					"default": 2
+				},
+				{
+					"type": "text",
+					"id": "name",
+					"label": "Nom du champ",
+					"default": "Custom field"
+				},
+				{
+					"type": "text",
+					"id": "placeholder",
+					"label": "Information field",
+					"default": "Your field"
+				},
+				{
+					"type": "checkbox",
+					"id": "isRequired",
+					"label": "Field is required",
+					"default": true
+				}
+			]
+		},
+		{
+			"name": "Dropdown field",
+			"type": "dropdown-field",
+			"settings": [
+				{
+					"type": "range",
+					"id": "size",
+					"min": 1,
+					"max": 4,
+					"step": 1,
+					"label": "Taille du champ",
+					"default": 2
+				},
+				{
+					"type": "text",
+					"id": "name",
+					"label": "Nom du champ",
+					"default": "Custom field"
+				},
+				{
+					"type": "text",
+					"id": "options",
+					"label": "Options",
+					"default": "Option 1,Option2, Option3",
+					"info": "Use comma between each option"
+				},
+				{
+					"type": "checkbox",
+					"id": "isRequired",
+					"label": "Field is required",
+					"default": true
+				}
+			]
+		}
+	]
+}
+{% endschema %}

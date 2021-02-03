@@ -1,0 +1,587 @@
+{
+    "display_add_note": false,
+    "text_add_note": "Ajouter une note à sa commande (question ou commentaire)",
+    "loader_position": [
+      "on_line_item"
+    ],
+    "layout": [
+      "Classic"
+    ],
+    "spacings": [
+      "tight"
+    ],
+    "root_var": {
+      "--cart-background-color": "#F4F3F3",
+      "--cart-border-color": "#535353",
+
+      "--cart-main-text-color": "#000",
+      "--cart-secondary-text-color": "#000",
+      "--cart-tertiary-text-color": "#000",
+
+      "--cart-error-color": "red",
+
+      "--cart-primary-color": "#000",
+      "--cart-secondary-color": "#fff",
+      "--cart-tertiary-color": "#777",
+
+      "--cart-hint-color": "",
+
+      "--cart-large-text-size": "1.2em",
+      "--cart-medium-text-size": "1em",
+      "--cart-normal-text-size": "16px",
+      "--cart-small-text-size": "0.8em"
+    },
+    "section": {
+      "overlay": {
+        "enabled": true,
+        "opacity": 0.2
+      },
+      "open": {
+        "on_cart_update": true
+      },
+      "close": {
+        "on_outside_click": true
+      }
+    },
+    "blocks": [
+      {
+        "block_type": "header",
+        "configurations": {
+          "scope": 0,
+          "title": "Panier",
+          "title_position": [
+            "left"
+          ],
+          "display_cart_count": false,
+          "button_close_url": "",
+          "button_close_display": false,
+          "header_fixed": true
+        }
+      },
+      {
+        "block_type": "summary",
+        "block_level_options": [
+          {
+            "option":"add_address",
+             "settings":{
+              "enabled":true,
+              "title_line":{
+                 "enabled":true,
+                 "label":"Ajout d'une adresse"
+              },
+              "subtotal_line":{
+                 "enabled":false,
+                 "label":""
+              },
+              "inputs":{
+               "enabled":true,
+               "last_name":{
+                  "type":"text",
+                  "label":"Nom",
+                  "placholder":"Nom",
+                  "required":true
+               },
+               "first_name":{
+                  "type":"text",
+                  "label":"Prénom",
+                  "required":true
+               },
+               "address1":{
+                  "type":"text",
+                  "label":"Adresse",
+                  "required":true
+               },
+               "address2":{
+                  "type":"text",
+                  "label":"Complément d'adresse",
+                  "required":false
+               },
+               "country":{
+                  "type":"select",
+                  "label":"Pays",
+                  "required":true,
+                  "options":[
+                     "France",
+                     "Belgique"
+                  ]
+               },
+               "zip":{
+                  "type":"number",
+                  "label":"Code postal",
+                  "required":true
+               },
+               "phone":{
+                  "type":"number",
+                  "label":"Téléphone",
+                  "required":true
+               },
+               "submit":{
+                  "type":"submit",
+                  "label":"Valider"
+               }
+              }
+             }
+           }
+        ],
+        "configurations": {
+          "scope": 2,
+          "enabled": true,
+          "collapsible": false,
+          "open_default": true,
+          "title_line": {
+            "enabled": false,
+            "label": "Sommaire"
+          },
+          "subtotal_line": {
+            "enabled": false,
+            "label": "Sous-total"
+          },
+          "discounts_line": {
+            "enabled": false,
+            "label": "Remises"
+          },
+          "shipping_line": {
+            "enabled": true,
+            "label": "Livraison",
+            "value": "Calculé à l'etape suivante",
+            "button_add_address": "Ajouter une adresse"
+          },
+          "weight_line": {
+            "enabled": false,
+            "label": "Poids total"
+          },
+          "total_line": {
+            "enabled": true,
+            "label": "Total",
+            "display_cart_count": true,
+            "cart_count_prefix": " articles"
+          }
+        }
+      },
+      {
+        "block_type": "spacer",
+        "configurations": {
+          "scope": 2,
+          "spacing": "medium"
+        }
+      },
+      {
+        "block_type": "button",
+        "configurations": {
+          "scope": 2,
+          "enabled": true,
+          "width": "medium",
+          "button_align": "center",
+          "active_hover": true,
+          "text_align": "center",
+          "text_bold": true,
+          "title" : "Button Test",
+          "url": "https://localhost:3000/products/product-3-options"
+        }
+      },
+      {
+        "block_type": "spacer",
+        "configurations": {
+          "scope": 2,
+          "spacing": "medium"
+        }
+      },
+      {
+        "block_type": "icons",
+        "icons": [
+          {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0526/0001/2975/files/message.png?v=1610461549",
+            "icon_width": "xsmall",
+            "icon_text": "Email de rappel avant chaque envoi",
+            "text_bold": false,
+            "grid_direction": "row"
+          },
+          {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0526/0001/2975/files/unlock.png?v=1610461549",
+            "icon_width": "xsmall",
+            "icon_text": "Modifier ou annuler gratuitement en 1 clic",
+            "text_bold": false,
+            "grid_direction": "row"
+          }
+        ],
+        "configurations": {
+          "scope": 2,
+          "enabled": true,
+          "number_per_row": 1,
+          "align": "left"
+        }
+      },
+      {
+        "block_type": "items",
+        "item_level_options": [
+          {
+            "type": "basic",
+            "hidden": false,
+            "settings": {
+              "displayed_values": {
+                "title": {"source": "base || metafield", "selector": "title || namespace.key"},
+                "sub": {"source": "base || metafield", "selector": "title || namespace.key"},
+                "original_line_price": true,
+                "final_line_price": true,
+                "original_unit_price": true,
+                "final_unit_price": true,
+                "unit_price_measurement": true,
+                "weight": true,
+                "vendor": true,
+                "type": true,
+                "properties": {"selector": "* || with_prefix || without_prefix", "condition": "csv"}
+              },
+              "grouping": {
+                "enabled" : true,
+                "title"   : "Mes produits d'achat unique",
+                "subtitle": ""
+              },
+              "quantity": {
+                "updatable" : true
+              },
+              "remove": {
+                "enabled" : true
+              },
+              "options": {
+                "updatable" : true,
+                "display_summary": true
+              }
+            }
+          },
+          {
+            "type": "non_native_recharge",
+            "hidden": false,
+            "settings": {
+              "displayed_values": {
+                "title": {"source": "base || metafield", "selector": "title || namespace.key"},
+                "sub": {"source": "base || metafield", "selector": "title || namespace.key"},
+                "original_line_price": true,
+                "final_line_price": true,
+                "original_unit_price": true,
+                "final_unit_price": true,
+                "unit_price_measurement": true,
+                "weight": true,
+                "vendor": true,
+                "type": true,
+                "properties": {"selector": "* || with_prefix || without_prefix", "condition": "csv"}
+              },
+              "grouping": {
+                "enabled" : true,
+                "title"   : "Vos livraisons régulières sans engagement",
+                "subtitle": ""
+              },
+              "quantity": {
+                "updatable" : false
+              },
+              "remove": {
+                "enabled" : true
+              },
+              "options": {
+                "updatable" : true,
+                "display_summary": true
+              }
+            }
+          },
+
+          // Reward line item should be added dynamically to the list of items once the rewards block is activated.
+          {
+            "type": "reward",
+            "hidden": true,
+            "settings": {
+              "displayed_values": {
+                "title": {"source": "base || metafield", "selector": "title || namespace.key"},
+                "sub": {"source": "base || metafield", "selector": "title || namespace.key"},
+                "original_line_price": true,
+                "final_line_price": true,
+                "original_unit_price": true,
+                "final_unit_price": true,
+                "unit_price_measurement": true,
+                "weight": true,
+                "vendor": true,
+                "type": true,
+                "properties": {"selector": "* || with_prefix || without_prefix", "condition": "csv"}
+              },
+              "grouping": {
+                "enabled" : true,
+                "title"   : "Mes produits en rewards",
+                "subtitle": ""
+              },
+              "quantity": {
+                "updatable" : false
+              },
+              "remove": {
+                "enabled" : true
+              },
+              "options": {
+                "updatable" : true,
+                "display_summary": true
+              }
+            }
+          },
+
+          // Reward line item should be added dynamically to the list of items once the rewards block is activated.
+          {
+            "type": "featured_upsell",
+            "hidden": true,
+            "settings": {}
+          }
+        ],
+        "configurations": {
+          "scope": 2,
+          "grouping": true,
+          "item_image": {
+            "form": "squary || rec",
+            "size": "s || m || l"
+          },
+          "link_product": {
+            "image" : false,
+            "title" : true
+          },
+          "quantity": {
+            "style"   : "actions", // dropdown // actions // none //
+            "limit_max": 10,
+            "metadata" : {}
+          },
+          "remove": {
+            "enable_swiping_on_mobile" : true,
+            "style"    : "both", // only_icon // both // none
+            "label"    : "supprimer",
+            "icon"     : "xxxx",
+            "metadata" : {}
+          },
+          "options": {
+            "update_layout" : "overlay1 | overlay2 | inline",
+            "metadata" : {}
+          }
+        }
+      },
+      {
+        "block_type": "richtext",
+        "configurations": {
+          "scope": 0,
+          "content_alignment": "center",
+          "title": "Promos de Noël",
+          "description": "Retrouver la liste des promos de noël <a href='#'>ici</a>",
+          "font_title": "s | m | l",
+          "font_description": "s | m | l"
+        }
+      },
+      {
+        "block_type": "richtext",
+        "configurations": {
+          "scope": 0,
+          "content_alignment": "center",
+          "title": "Your cart is empty",
+          "description": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "font_title": "s | m | l",
+          "font_description": "s | m | l"
+        }
+      },
+      {
+        "block_type": "upsell",
+        "block_level_options": [
+         {
+           "option":"add_product",
+           "settings":{
+            "enabled":true,
+            "title_line":{
+               "enabled":false,
+               "label":"Ajout d'un produit"
+            },
+            "subtotal_line":{
+               "enabled":false,
+               "label":""
+            },
+            "displayed_values": {
+              "title": {"source": "base || metafield", "selector": "title || namespace.key"},
+              "sub": {"source": "base || metafield", "selector": "title || namespace.key"},
+              "original_line_price": true,
+              "final_line_price": true,
+              "original_unit_price": true,
+              "final_unit_price": true,
+              "unit_price_measurement": true,
+              "weight": true,
+              "vendor": true,
+              "type": true,
+              "properties": {"selector": "* || with_prefix || without_prefix", "condition": "csv"}
+            },
+            "quantity": {
+              "updatable" : true
+            }
+          }
+        }
+        ],
+        "configurations": {
+          "scope": 2,
+          "title": "center",
+          "search_term": "flacon",
+          "style": "slider", // default (en vrac) // slider
+          "products_per_row": 1,
+          "max_products": 2, // hard limit (by shopify) : 10.
+          "max_rows": 1, // quand slider toujours 1.
+          "hide_products_in_cart": true, // Afficher/ou pas les produits deja ajoutés au panier.
+          "button_label": "Ajouter",
+          "button_click_open_popup": true,
+          "button_template_popup": "add_address"
+        }
+      },
+      {
+        "block_type": "featured_upsell",
+        "configurations": {
+          "scope": 2,
+          "title": "some title",
+          "description": "some description xxx xxx xxx xxx xx xxxx xxxx xxx xxx xx xxx xx",
+          "input_label": "Add it here.",
+          "hide_if_selected": false,
+          "variant_id": "35267642032279"
+        }
+      },
+      {
+        "block_type": "spacer",
+        "configurations": {
+          "scope": 1,
+          "spacing": "small"
+        }
+      },
+      {
+        "block_type": "image",
+        "configurations": {
+          "scope": 1,
+          "src": "https://images.squarespace-cdn.com/content/v1/555510e6e4b0ecb85ccf4059/1477495643274-JJCYYZ273FA3SNVLM8TO/ke17ZwdGBToddI8pDm48kBrIqzSO0mTd-1KU5HQTDONZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVGlwlILRf7mwALx7eEA60aFxAVKEm-e277b5Z3RRyJ7Ohur-lC0WofN0YB1wFg-ZW0/Documents+Live+In+Too+Many+Places",
+          "nature": "default", // background
+          "crop" : false, // round // square
+          "full_width": true
+        }
+      },
+      {
+        "block_type": "rewards",
+        "configurations": {
+          "scope": 0,
+          "enabled": true,
+          "steps":[
+            {
+              "type": "free_shipping", // code // product //
+              "threshold": 30000, // in cents
+              "image": "",
+              "before_message": "Only ##left## to unlock free shipping", // variables : left, threshold
+              "after_message": "Enjoy free shipping for your order."
+            },
+            {
+              "type": "product",
+              "image": "",
+              "threshold": 5000, // in cents
+              "before_message": "Only ##left## to earn the magnificent medallion", // variables : left, threshold
+              "after_message": "You've earned the magnificent medallion",
+              // reward specific settings :
+              "variant_id": "35267642032279"
+            },
+            {
+              "type": "code",
+              "image": "",
+              "threshold": 40000, // in cents
+              "before_message": "Only ##left## to unlock a xxx discount code.", // variables : left, threshold
+              "after_message": "The discount code will be applied automatically to your checkout.",
+              // reward specific settings :
+              "code": "xxxxxx"
+            }
+          ]
+        }
+      },
+      {
+        "block_type": "accordion",
+        "configurations": {
+          "scope": 0,
+          "allow_multiple_active_tabs": false,
+          "display_icon": true,
+          "icon": "plus"
+        },
+        "panels": [
+          {
+            "title": "Faq 1",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          },
+          {
+            "title": "Faq 2",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          },
+          {
+            "title": "Faq 3",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          }
+        ]
+      },
+      {
+        "block_type": "footer",
+        "block_level_options": [
+          {
+            "option": "cart",
+            "settings": {
+              "enabled": true,
+              "display_total": false,
+              "label": "Aller au panier"
+            }
+          },
+          {
+            "option": "checkout",
+            "settings": {
+              "enabled": true,
+              "display_total": true,
+              "label": "Paiement"
+            }
+          },
+          {
+            "option": "summary",
+            "settings": {
+              "enabled": true,
+              "collapsible": true,
+              "title_line": {
+                "enabled": true,
+                "label": "Sommaire"
+              },
+              "subtotal_line": {
+                "enabled": true,
+                "label": "Sous-total"
+              },
+              "discounts_line": {
+                "enabled": true,
+                "label": "Remises"
+              },
+              "shipping_line": {
+                "enabled": true,
+                "label": "Livraison",
+                "value": "Calculé à l'etape suivante"
+              },
+              "weight_line": {
+                "enabled": true,
+                "label": "Poids total"
+              },
+              "total_line": {
+                "enabled": true,
+                "label": "Total"
+              }
+            }
+          },
+          {
+            "option": "tos",
+            "settings": {
+              "enabled": true,
+              "title" : "",
+              "content": "J'accepte les conditions générales de vente",
+              "number_of_visible_lines": -1
+            }
+          },
+          {
+            "option": "ps",
+            "settings": {
+              "enabled": true,
+              "content" : "La livraison n'est pas affectée par le COVID"
+            }
+          }
+        ],
+        "configurations": {
+          "scope": 2,
+          "footer_fixed": false
+        }
+      }
+    ]
+  }

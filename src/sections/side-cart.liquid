@@ -1,0 +1,48 @@
+<div data-cart-close data-cart-background-overlay class="side-cart-overlay
+{% if section.settings.cart_mode == 'below' %}
+  side-cart-overlay--below-header
+{% endif %}">
+</div>
+<div data-side-cart class="side-cart
+  {% if section.settings.cart_mode == 'below' %}
+    side-cart--below-header
+  {% endif %}">
+  {% assign title = section.settings.title %}
+  {% assign aff_cart_close = section.settings.aff_cart_close %}
+  {% include 'cart' %}
+</div>
+
+{% schema %}
+{
+  "name": "Side cart",
+  "settings": [
+    {
+      "type":      "select",
+      "id":        "cart_mode",
+      "label":     "Side cart mode",
+      "options": [
+        {
+          "value": "",
+          "label": "Full height"
+        },
+        {
+          "value": "below",
+          "label": "Below header"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Panier"
+    },
+    {
+      "type": "checkbox",
+      "id": "aff_cart_close",
+      "label": "Afficher la croix pour close le panier",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

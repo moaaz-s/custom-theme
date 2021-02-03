@@ -1,0 +1,64 @@
+{% include 'list-collections-template' %}
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Heading",
+			"default": "Collection list"
+		},
+		{
+			"type": "range",
+			"id": "size",
+			"min": 2,
+			"max": 5,
+			"step": 1,
+			"label": "Number of collections per row",
+			"default": 3
+		},
+		{
+			"type": "range",
+			"id": "size_mobile",
+			"min": 1,
+			"max": 3,
+			"step": 1,
+			"label": "Number of collections per row mobile",
+			"default": 2
+		},
+		{
+			"type": "checkbox",
+			"id": "all_collections",
+			"label": "Show all collections",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "button_all",
+			"label": "Button text for all collections",
+			"default": "Show collection"
+		}
+    ],
+    "blocks": [
+		{
+			"type": "collection",
+			"name": "Collection",
+			"settings": [
+				{
+					"label": "Collection",
+					"id": "collection",
+					"type": "collection"
+				},
+				{
+					"type": "text",
+					"id": "button",
+					"label": "Button text",
+					"default": "Show collection"
+				}
+			]
+		}
+    ]
+  }
+{% endschema %}

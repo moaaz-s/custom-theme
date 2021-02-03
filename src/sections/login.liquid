@@ -1,0 +1,191 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="page-login">
+  <div class="{{ section.settings.container_size }}">
+    <div class="form-success hide" id="ResetSuccess">
+      {{ 'customer.recover_password.success' | t }}
+    </div>
+    <div id="CustomerLoginForm">
+      <div class="grid grid--center">
+        {% form 'customer_login' %}
+        <div class="grid__cell">
+          <div class="{{ section.settings.title_alignment }}">
+            <h1 class="heading z-h3">{{ 'customer.login.title' | t }}</h1>
+            {% unless section.settings.text == blank %}
+            <p>
+              {{ section.settings.text }}
+            </p>
+            {% endunless %}
+          </div>
+        </div>
+        <div class="grid__cell">
+          {{ form.errors | default_errors }}
+        </div>
+        <div class="grid__cell">
+          <label for="CustomerEmail" class="label-hidden">
+            {{ 'customer.login.email' | t }}
+          </label>
+          <input type="email"
+                 class="input input--medium"
+                 name="customer[email]"
+                 id="CustomerEmail"
+                 class="{% if form.errors contains 'email' %}input-error{% endif %}"
+                 placeholder="{{ 'customer.login.email' | t }}"
+                 spellcheck="false"
+                 autocomplete="off"
+                 autocapitalize="off"
+                 autofocus>
+          </div>
+          <div class="grid__cell">
+          {% if form.password_needed %}
+            <label for="CustomerPassword" class="label-hidden">
+              {{ 'customer.login.password' | t }}
+            </label>
+            <input type="password"
+                   class="input input--medium"
+                   name="customer[password]"
+                   id="CustomerPassword"
+                   class="{% if form.errors contains 'password' %}input-error{% endif %}"
+                   placeholder="{{ 'customer.login.password' | t }}">
+          {% endif %}
+          </div>
+          <div class="grid__cell">
+            <input type="submit" class="button button--invert input input--medium" value="{{ 'customer.login.sign_in' | t }}">
+          </div>
+          <div class="grid__cell">
+            <div class="mt-10">
+              <a class="link" href="/account/register">
+                {{ 'layout.customer.create_account' | t }}
+              </a>
+
+              {% if form.password_needed %}
+              <span>or</span>
+                <a class="link" href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
+              {% endif %}
+            </div>
+          </div>
+
+        {% endform %}
+
+      </div>
+    </div>
+
+    <div id="RecoverPasswordForm" class="hide">
+      <div class="grid grid--center">
+        <div class="grid__cell">
+          <div class="{{ section.settings.title_alignment }}">
+            <h2 class="heading z-h3">{{ 'customer.recover_password.title' | t }}</h2>
+            <p>{{ 'customer.recover_password.subtext' | t }}</p>
+          </div>
+        </div>
+        {% form 'recover_customer_password' %}
+          <div class="grid__cell">
+            {{ form.errors | default_errors }}
+          </div>
+          <div class="grid__cell">
+            {% if form.posted_successfully? %}
+              <span class="hide reset-password-success"></span>
+            {% endif %}
+          </div>
+          <div class="grid__cell">
+            <label for="RecoverEmail" class="label-hidden">
+              {{ 'customer.recover_password.email' | t }}
+            </label>
+            <input type="email"
+                  class="input input--medium"
+                   name="email"
+                   id="RecoverEmail"
+                   placeholder="{{ 'customer.recover_password.email' | t }}"
+                   spellcheck="false"
+                   autocomplete="off"
+                   autocapitalize="off">
+          </div>
+          <div class="grid__cell">
+            <input type="submit" class="input input--medium button button--invert" value="{{ 'customer.recover_password.submit' | t }}">
+          </div>
+          <div class="grid__cell">
+            <div class="mt-10">
+              <button type="button" class="link" id="HideRecoverPasswordLink">
+                {{ 'customer.recover_password.cancel' | t }}
+              </button>
+            </div>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+
+    {% if shop.checkout.guest_login %}
+    <div class="grid grid--center">
+      <div class="grid__cell">
+        <div class="{{ section.settings.title_alignment }}">
+          <h2 class="heading z-h3">{{ 'customer.login.guest_title' | t }}</h2>
+        </div>
+      </div>
+      <div class="grid__cell">
+        {% form 'guest_login' %}
+          <input class="input input--medium button button--invert" type="submit" value="{{ 'customer.login.guest_continue' | t }}">
+        {% endform %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+
+
+{% schema %}
+{
+	"name": "login",
+	"settings": [
+		{
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Title alignment",
+        "options": [
+  				{
+  					"group": "Alignment",
+  					"value": "align-left",
+  					"label": "Left"
+  				},
+  				{
+  					"group": "Alignment",
+  					"value": "align-center",
+  					"label": "Center"
+  				},
+  				{
+  					"group": "Alignment",
+  					"value": "align-right",
+  					"label": "Right"
+  				}
+        ],
+        "default": "align-center"
+		},
+		{
+			"type": "select",
+			"id": "container_size",
+			"label": "Container size",
+			"options": [
+			{
+				"group": "Container size",
+				"value": "container--small",
+				"label": "Small"
+			},
+			{
+				"group": "Container size",
+				"value": "container",
+				"label": "Normal"
+			},
+			{
+				"group": "Container size",
+				"value": "container--full",
+				"label": "Full"
+			}
+			],
+			"default": "container--small"
+		},
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texte"
+    }
+	]
+}
+{% endschema %}

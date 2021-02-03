@@ -1,0 +1,167 @@
+{% include 'products-list' %}
+
+{% schema %}
+{
+  "name": "Products list",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "allow_flickity",
+      "label": "Show products with flickity for desktop and mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "allow_flickity_mobile",
+      "label": "Show products with flickity only for mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flickity_dots",
+      "label": "Show flickity dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flickity_buttons",
+      "label": "Show flickity buttons",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "products_per_line_desktop",
+      "min": 3,
+      "max": 5,
+      "step": 1,
+      "label": "Products per line desktop",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "products_per_line_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Products per line mobile",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "block_alignment",
+      "label": "Product block alignment",
+      "options": [
+      {
+        "group": "Alignment",
+        "value": "align-left",
+        "label": "Left"
+      },
+      {
+        "group": "Alignment",
+        "value": "align-center",
+        "label": "Center"
+      },
+      {
+        "group": "Alignment",
+        "value": "align-right",
+        "label": "Right"
+      }
+      ],
+      "default": "align-center"
+    },
+    {
+      "type": "select",
+      "id": "container_size",
+      "label": "Container size",
+      "options": [
+      {
+        "group": "Container size",
+        "value": "container--small",
+        "label": "Small"
+      },
+      {
+        "group": "Container size",
+        "value": "container",
+        "label": "Normal"
+      },
+      {
+        "group": "Container size",
+        "value": "container--full",
+        "label": "Full"
+      }
+      ],
+      "default": "container"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Product",
+      "type": "product",
+      "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      },
+      {
+        "type": "richtext",
+        "id": "custom_text",
+        "label": "Custom description"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Title alignment",
+        "options": [
+        {
+          "group": "Alignment",
+          "value": "align-left",
+          "label": "Left"
+        },
+        {
+          "group": "Alignment",
+          "value": "align-center",
+          "label": "Center"
+        },
+        {
+          "group": "Alignment",
+          "value": "align-right",
+          "label": "Right"
+        }
+        ],
+        "default": "align-center"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Custom text alignment",
+        "options": [
+          {
+            "group": "Alignment",
+            "value": "align-left",
+            "label": "Left"
+          },
+          {
+            "group": "Alignment",
+            "value": "align-center",
+            "label": "Center"
+          },
+          {
+            "group": "Alignment",
+            "value": "align-right",
+            "label": "Right"
+          }
+          ],
+          "default": "align-center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products list",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

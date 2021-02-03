@@ -1,0 +1,49 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="page-account">
+  <div class="container">
+    <h1 class="heading z-h2">{{ 'customer.account.title' | t }}</h1>
+    <div class="grid">
+      <div class="grid__cell 4/12--lap-and-up mt-20">
+        <h2 class="heading z-h3">{{ 'customer.account.details' | t }}</h1>
+        {{ customer.default_address | format_address }}
+        <a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+      </div>
+
+      <div class="grid__cell 8/12--lap-and-up mt-20">
+      <h2 class="heading z-h3">{{ 'customer.orders.title' | t }}</h2>
+      {% paginate customer.orders by 20 %}
+        {% if customer.orders.size != 0 %}
+          <table class="responsive-table">
+            <thead>
+            <tr>
+              <th>{{ 'customer.orders.order_number' | t }}</th>
+              <th>{{ 'customer.orders.date' | t }}</th>
+              <th>{{ 'customer.orders.payment_status' | t }}</th>
+              <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+              <th>{{ 'customer.orders.total' | t }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in customer.orders %}
+              <tr class="responsive-table">
+              <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+              <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+              <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+              <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+              <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>{{ 'customer.orders.none' | t }}</p>
+        {% endif %}
+
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+
+      {% endpaginate %}
+      </div>
+    </div>
+  </div>
+</section>

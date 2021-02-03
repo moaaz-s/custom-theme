@@ -1,0 +1,166 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% if handle contains 'echantillons' %}
+    <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if settings.favicon != blank %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {% endif %}
+
+  {% capture seo_title %}
+    {{ page_title }}
+    {% if current_tags %}
+      {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {% endif %}
+    {% if current_page != 1 %}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {% endif %}
+    {% unless page_title contains shop.name %}
+      &ndash; {{ shop.name }}
+    {% endunless %}
+  {% endcapture %}
+  <title>{{ seo_title }}</title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% include 'social-meta-tags' %}
+
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+
+  <!-- Anti-flicker snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'GTM-5DNBF4K':true});</script>
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    {% capture template_handle %}{{ template | handle }}{% endcapture %}
+    window.theme = {
+      isCartPage: {% if template_handle == 'cart' %}true{% else %}false{% endif %},
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        discountRecharge: {{ settings.recharge_discount | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }},
+      discount_available: {{ settings.discount_available | default: false | json }}
+    };
+  </script>
+
+  {% if template.directory == 'customers' %}
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
+  {% endif %}
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}"></script><!--<![endif]-->
+  <!--[if lt IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
+
+  <script>
+    jQuery(function() {
+        CartJS.init({{ cart | json }});
+    });
+  </script>
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lt IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+
+  {{ content_for_header }}
+ 
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5DNBF4K');</script>
+<!-- End Google Tag Manager -->
+  
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DNBF4K"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- TrustBox script -->
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+  <!-- End TrustBox script -->
+
+	{% include 'ld-json' %}
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  {% section 'announcement' %}
+  {% section 'header' %}
+
+
+  {% assign page_mega_section = false %}
+  {% if template == 'index' or template contains "product" or template contains "collection" or page.handle == "faq" %}
+    {% assign page_mega_section = true %}
+  {% endif %}
+
+  <main id="MainContent" {% unless page_mega_section %}class="main"{% endunless %}>
+    <div data-return-account class="hide">
+      <a class="link link--underline recharge__back" href="/account">Retour au compte</a>
+    </div>
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  <script type="text/javascript">
+    //Clear localstorage echantillon except echantillon template or checkout
+    localStorage.removeItem('echantillonCart');
+  </script>
+
+  {%- for item in cart.items -%}
+    {%- if item.product.type == 'echantillon' -%}
+    <script type="text/javascript">
+      CartJS.clear();
+      $('.cart_count--header').text('0');
+    </script>
+    {%- endif -%}
+  {%- endfor -%}
+
+  <script>
+    /** ReCharge page **/
+    currLoc = $(location).attr('href');
+    if (currLoc.indexOf('tools') && $("#rc_navigation").length != 0) {
+      console.log("Tools")
+      var a = document.createElement("a");
+      a.setAttribute("href", "https://lamarqueenmoins.fr/account");
+      a.text = "Retour au compte";
+      a.className = "link link--underline recharge__back";
+
+      var nav = document.getElementById('rc_navigation');
+      nav.appendChild(a);
+    }
+  </script>
+  <link rel="stylesheet" href="{{ 'lmem-styles.css' | asset_url }}" type="text/css">
+  <script>
+    const config_sidecart = "{{ 'config.json' | asset_url }}";
+  </script>
+  <script src="{{ 'lmem-templates.js' | asset_url }}"></script>
+  <script src="{{ 'ScriptTag.js' | asset_url }}"></script>
+  <script>
+		var cartManager = new CartManager();
+		cartManager.init();
+	</script>
+
+</body>
+</html>

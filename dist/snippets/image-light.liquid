@@ -1,0 +1,18 @@
+{% if lazyload == false %}
+  <img class="{{ class }}"
+     src="{{ img | img_url: 'master' }}"
+     alt="{{ img.alt | escape }}">
+     {{ attr }}
+{% else %}
+  {% assign lazyImage = img %}
+  {% assign img_url = lazyImage | img_url: '1x1' | replace: '1x1.', '{width}x.' %}
+  <img class="lazyload {{ class }}"
+     src="{{ lazyImage | img_url: '300x' }}"
+     data-src="{{ img_url }}"
+     data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+     data-aspectratio="{{ lazyImage.aspect_ratio }}"
+     data-sizes="auto"
+     data-parent-fit="contain"
+     alt="{{ lazyImage.alt | escape }}">
+     {{ attr }}
+{% endif %}

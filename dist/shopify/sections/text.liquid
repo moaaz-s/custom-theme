@@ -1,0 +1,164 @@
+{% include 'text' %}
+
+{% schema %}
+  {
+    "name": "Text",
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "name": "Simple text",
+        "type": "text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Section title"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Section sub-title"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "select",
+            "id": "title_alignment",
+            "label": "Title alignment",
+            "options": [
+              {
+                "group": "Alignment",
+                "value": "align-left",
+                "label": "Left"
+              },
+              {
+                "group": "Alignment",
+                "value": "align-center",
+                "label": "Center"
+              },
+              {
+                "group": "Alignment",
+                "value": "align-right",
+                "label": "Right"
+              }
+            ],
+            "default": "align-center"
+          },
+          {
+            "type": "select",
+            "id": "subtitle_alignment",
+            "label": "Sub-title alignment",
+            "options": [
+              {
+                "group": "Alignment",
+                "value": "align-left",
+                "label": "Left"
+              },
+              {
+                "group": "Alignment",
+                "value": "align-center",
+                "label": "Center"
+              },
+              {
+                "group": "Alignment",
+                "value": "align-right",
+                "label": "Right"
+              }
+            ],
+            "default": "align-center"
+          },
+          {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "options": [
+              {
+                "group": "Alignment",
+                "value": "align-left",
+                "label": "Left"
+              },
+              {
+                "group": "Alignment",
+                "value": "align-center",
+                "label": "Center"
+              },
+              {
+                "group": "Alignment",
+                "value": "align-right",
+                "label": "Right"
+              }
+            ],
+            "default": "align-center"
+          },
+          {
+            "type": "range",
+            "id": "block_size",
+            "min": 1,
+            "max": 12,
+            "step": 1,
+            "label": "Block size",
+            "default": 12
+          },
+          {
+            "type": "select",
+            "id": "block_position",
+            "label": "Block position",
+            "options": [
+              {
+                "group": "Block position",
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "group": "Block position",
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "group": "Block position",
+                "value": "center",
+                "label": "Center"
+              }
+            ],
+            "default": "left"
+          },
+          {
+            "type": "select",
+            "id": "container_size",
+            "label": "Container size",
+            "options": [
+              {
+                "group": "Container size",
+                "value": "container--small",
+                "label": "Small"
+              },
+              {
+                "group": "Container size",
+                "value": "container",
+                "label": "Normal"
+              },
+              {
+                "group": "Container size",
+                "value": "container--full",
+                "label": "Full"
+              }
+            ],
+            "default": "container"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,58 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="cart">
+  <form action="/cart" method="post" novalidate>
+    <div class="cart" {% if settings.cart_active_free_shipping %}data-minimum-shipping="{{ settings.cart_free_shipping }}"{% endif %}>
+      <div class="cart-header">
+        {% unless title == blank %}
+        <h1 class="heading z-h5 cart__title">{{ title }}</h1>
+        {% endunless %}
+        <div class="cart-close {% unless aff_cart_close == true %}only-mobile{% endunless%}" data-cart-close>
+          &#10005;
+        </div>
+      </div>
+      <div class="cart__items" data-cart-items>
+
+        {% for item in cart.items %}
+        {% assign item_image = item.image | img_url: '240x240' %}
+        {% unless item.variant.title == "Default Title" %}
+        {% assign item_variant_title = item.variant.title %}
+        {% endunless %}
+        {% assign item_variant_id = item.variant.id %}
+        {% assign item_product_title = item.product.title %}
+        {% assign item_price = item.price | money %}
+        {% assign item_quantity = item.quantity  %}
+        {% assign item_quantity_plus = item.quantity | plus: 1 %}
+        {% assign item_quantity_minus = item.quantity | minus: 1 %}
+        {% assign item_line_price = item.line_price | money %}
+        {% assign item_url = item.url | within: collections.all %}
+        {% include 'cart-item' %}
+
+        {% endfor %}
+      </div>
+      <div class="cart-footer" data-cart-footer>
+        <div class="cart-footer__content">
+          <div class="cart-footer__content-top">
+            <div>
+              <div class="heading z-h4 cart-footer__total-price">Sous-total :
+                <span data-cart-total-price>{{ cart.total_price | money }}
+                </span>
+              </div>
+            </div>
+            <div data-cart-close class="link cart-footer__continue">
+              Continue to shop
+            </div>
+          </div>
+          <button data-cart-button type="submit" name="checkout" class="link cart-footer__checkout">
+          Check out
+          <div class="arrow-right">
+            <div class="arrow-right__line">
+            </div>
+            <div class="arrow-right__arrow"></div>
+          </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+
+{% include 'cart-item-handlebar' %}

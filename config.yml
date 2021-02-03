@@ -1,0 +1,21 @@
+development:
+  key: 27a9b2d3a6ddda8d738e4484f2fa2a70
+  password: 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
+  theme_id: "118563569850"
+  store: concept-usine.myshopify.com
+  # proxy: http://localhost:3000
+  ignore_files:
+    - "*.gif"
+    - "*.jpg"
+    - config/settings_data.json
+# production:
+#   password: 16ef663594568325d64408ebcdeef528
+#   theme_id: "456"
+#   store: can-i-buy-a-feeling.myshopify.com
+#   timeout: 60s
+#   readonly: true
+# test:
+#   password: 16ef663594568325d64408ebcdeef528
+#   theme_id: "789"
+#   store: can-i-buy-a-feeling.myshopify.com
+#   ignores: ignore.txt

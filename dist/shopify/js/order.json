@@ -1,0 +1,36 @@
+[
+    "dependencies/dot.js",
+
+    "helpers/tools.js",
+    "helpers/swipe.js",
+    "helpers/zerance_dom.js",
+    "helpers/filters.js",
+    "helpers/product.js",
+
+    "generic_classes/block.js",
+    "generic_classes/item.js",
+
+    "item_types/basic.js",
+    "item_types/native_subscription.js",
+    "item_types/native_recharge.js",
+    "item_types/non_native_recharge.js",
+    "item_types/item_adder.js",
+    "item_types/reward.js",
+    "item_types/featured_upsell.js",
+
+    "blocks/header.js",
+    "blocks/footer.js",
+    "blocks/items_manager.js",
+    "blocks/richtext.js",
+    "blocks/accordion.js",
+    "blocks/rewards.js",
+    "blocks/upsell.js",
+    "blocks/spacer.js",
+    "blocks/image.js",
+    "blocks/summary.js",
+    "blocks/button.js",
+    "blocks/icons.js",
+    "blocks/featured_upsell.js",
+
+    "main_controller/section.js"
+]
